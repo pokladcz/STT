@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Výuka: Mechanika (MEC) | STT</title>
+<title>Interaktivní výuka STT | STT</title>
 <meta name="description" content="Interaktivní výukový materiál strojírenské technologie – vnitřní stavba kovů a tepelné zpracování.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%23fbf8f3'/%3E%3Ctext x='12' y='17' font-family='Georgia,serif' font-size='12' font-weight='700' fill='%23b0561f' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E">
 <script src="../support.js"></script>
@@ -39,7 +39,7 @@
 <div style="min-height:100vh;background:#fbf8f3;font-family:'IBM Plex Sans',sans-serif;padding:64px 48px 80px;box-sizing:border-box">
   <div style="max-width:1080px;margin:0 auto 48px">
     <div style="display:flex;align-items:baseline;justify-content:space-between;gap:24px;flex-wrap:wrap;margin:0 0 16px">
-      <h1 style="font-family:'Quicksand',sans-serif;font-weight:700;font-size:44px;line-height:1.15;color:#231d16;margin:0">Výuka: Mechanika (MEC)</h1>
+      <h1 style="font-family:'Quicksand',sans-serif;font-weight:700;font-size:44px;line-height:1.15;color:#231d16;margin:0">Interaktivní výuka STT</h1>
       <a href="../o-projektu.html" style="display:inline-flex;align-items:center;gap:7px;font-family:'IBM Plex Sans',sans-serif;font-size:14.5px;font-weight:500;color:#8a8072;text-decoration:none;border-bottom:1px solid #ded3c2;padding-bottom:2px" style-hover="color:#231d16;border-bottom-color:#231d16">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 11v5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="7.8" r="1.2" fill="currentColor"/></svg>
         O&nbsp;projektu
@@ -115,7 +115,7 @@ class Component extends DCLogic {
     let inPreview = false;
     try { inPreview = window.self !== window.top; } catch (e) { inPreview = true; }
     const navItems = s ? s.nav : FALLBACK_NAV;
-    const homeCards = (s ? s.mecCards : []).map(c => {
+    const homeCards = (s ? s.home.cards : []).map(c => {
       const ready = c.status === 'ready';
       const meta = ICON_META[c.id] || { bg: '#eee5d8', svg: '' };
       return {
