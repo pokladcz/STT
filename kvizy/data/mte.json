@@ -1,0 +1,167 @@
+[
+  {
+    "q": "Jaký je základní princip pneumatiky?",
+    "options": [
+      "Využití tekutého kovu pro přenos výkonu",
+      "Přeměna energie stlačeného vzduchu na mechanickou práci",
+      "Využití gravitace k pohybu ventilů",
+      "Elektrické lineární motory s baterií"
+    ],
+    "correct": 1,
+    "explanation": "Pneumatické systémy využívají tlakovou energii stlačeného vzduchu, která je v pneumotoru (válci) přeměněna na mechanickou práci."
+  },
+  {
+    "q": "Jaký je hlavní rozdíl mezi pneumatikou a hydraulikou z fyzikálního hlediska?",
+    "options": [
+      "Pneumatika je mnohem dražší než hydraulika",
+      "Kapaliny v hydraulice jsou prakticky nestlačitelné, vzduch v pneumatice stlačitelný je",
+      "Hydraulika nepřenáší velké síly",
+      "Pneumatika neumožňuje lineární pohyb"
+    ],
+    "correct": 1,
+    "explanation": "Vzduch (plyn) lze snadno stlačit (mění objem), olej (kapalina) nikoliv. Proto se v hydraulice dosahuje vysokých a tuhých tlakových sil, zatímco pneumatika je 'odpružená'."
+  },
+  {
+    "q": "Jednočinný pneumatický válec se vyznačuje tím, že:",
+    "options": [
+      "Může pracovat tlakem v obou směrech (vysouvat i zasouvat)",
+      "Práci koná stlačeným vzduchem jen v jednom směru, vrací se obvykle vestavěnou pružinou",
+      "Nemá pístní tyč",
+      "Funguje i bez kompresoru"
+    ],
+    "correct": 1,
+    "explanation": "Jednočinný válec má jen jeden přívod vzduchu. Pohyb jedním směrem dělá tlak vzduchu, návrat zpět obstará vnitřní vratná pružina nebo vnější zátěž."
+  },
+  {
+    "q": "K čemu slouží rozváděč označený 5/2?",
+    "options": [
+      "Má 5 ventilů a 2 písty",
+      "Přenese tlak 5 bar za 2 sekundy",
+      "Má 5 cest (připojení) a 2 pracovní polohy (stavy)",
+      "Dělí výkon kompresoru 5/2"
+    ],
+    "correct": 2,
+    "explanation": "V pneumatických schématech určuje první číslo počet připojovacích otvorů (portů) a druhé číslo počet přepínatelných pozic šoupátka."
+  },
+  {
+    "q": "Jaký je vztah mezi tlakem (p), silou (F) a plochou (S)?",
+    "options": [
+      "F = p / S",
+      "p = F * S",
+      "p = F / S",
+      "S = p * F"
+    ],
+    "correct": 2,
+    "explanation": "Tlak vzniká působením síly na určitou plochu (p = F/S). Vzorec pro výpočet síly pístu pak je F = p * S."
+  },
+  {
+    "q": "Co znamená škrtící ventil s jednosměrným zpětným ventilem?",
+    "options": [
+      "Filtruje vzduch od prachu",
+      "V jednom směru průtok stlačeného vzduchu brzdí (škrtí) a v opačném směru ho pouští bez omezení volně",
+      "Nepouští vzduch nikam, tvoří tlakovou zátku",
+      "Slouží k mazání válce"
+    ],
+    "correct": 1,
+    "explanation": "Používá se zejména k regulaci rychlosti vysouvání/zasouvání pístu - reguluje odvětrávání vzduchu z válce pryč."
+  },
+  {
+    "q": "Kde se nejlépe uplatní hydraulické systémy (oproti pneumatickým)?",
+    "options": [
+      "Tam, kde potřebujeme ohromné síly, přesné polohování a tuhost (lisy, bagry)",
+      "V rychlých třídících linkách a manipulátorech do 1 kg",
+      "V čistých provozech v potravinářství, kde hrozí únik oleje",
+      "Při foukání trubek"
+    ],
+    "correct": 0,
+    "explanation": "Olej je nestlačitelný, hydraulika umožňuje extrémní pracovní tlaky (až 300+ barů) a generuje obrovské zdvihové síly bez 'pružení'."
+  },
+  {
+    "q": "K čemu slouží v pneumatické přípravné jednotce redukční ventil (regulátor tlaku)?",
+    "options": [
+      "Vyrábí stlačený vzduch",
+      "Zachytává kondenzát (vodu)",
+      "Sníží a udržuje stálý pracovní tlak pro daný stroj, i když kolísá tlak v centrálním rozvodu",
+      "Přimíchává do vzduchu olejový mlženec"
+    ],
+    "correct": 2,
+    "explanation": "Z rozvodu jde např. 8 bar, redukční ventil zaručí, že stroj dostane stabilních 6 bar, aby nástroje fungovaly spolehlivě a neskákaly."
+  },
+  {
+    "q": "Dvojčinný válec o průměru 50mm (plocha S1) a s pístnicí o průměru 20mm (plocha pístnice s2) bude mít:",
+    "options": [
+      "Výsuvnou a zásuvnou sílu úplně stejnou",
+      "Větší sílu při zasouvání než při vysouvání",
+      "Větší sílu při vysouvání (tlak působí na celou plochu S1), než při zasouvání (plocha je omezena o pístnici: S1 - s2)",
+      "Nulovou sílu, protože se tlaky vyruší"
+    ],
+    "correct": 2,
+    "explanation": "Tlak se opírá o plochu. Při zasouvání překáží průřez pístní tyče, takže plocha (a tím pádem i síla a spotřeba vzduchu) je menší."
+  },
+  {
+    "q": "Co to je 'logický člen AND' (Dvoutlakový ventil) v pneumatice?",
+    "options": [
+      "Generátor náhodných signálů",
+      "Součástka, která propustí vzduch k válci POUZE tehdy, jsou-li stisknuta obě dvě tlačítka (např. dvouruční bezpečností spouštění lisu)",
+      "Ventil pro snížení hluku odfuku",
+      "Zvýší tlak z kompresoru"
+    ],
+    "correct": 1,
+    "explanation": "Funkce logického součinu (AND). Výstup (Y) je aktivní pouze při signálu A i B současně."
+  },
+  {
+    "q": "Co znamená zkratka FRL v pneumatické přípravné jednotce?",
+    "options": [
+      "Fast, Reliable, Low-cost",
+      "Friction, Rotation, Linear",
+      "Filter, Regulator, Lubricator (Filtr, Redukční ventil, Maznice)",
+      "Force Response Logic"
+    ],
+    "correct": 2,
+    "explanation": "Každý vzduch přicházející do stroje musí projít úpravnou jednotkou: vyfiltrovat vlhkost a prach, nastavit správný tlak, a u starších systémů s gumovým těsněním přimazat."
+  },
+  {
+    "q": "Jaká vlastnost oleje je u hydrauliky klíčová pro výpočty ztát v hadicích?",
+    "options": [
+      "Jiskřivost",
+      "Viskozita (vnitřní tření a odpor kapaliny proti tečení)",
+      "Tvrdost",
+      "Hořlavost"
+    ],
+    "correct": 1,
+    "explanation": "Příliš hustý olej (vysoká viskozita) v mrazu teče pomalu a čerpadlo ho neutáhne, příliš řídký (horký) nepromazává a utíká z těsnění."
+  },
+  {
+    "q": "Z čeho se skládá klasický zubový hydrogenerátor (čerpadlo)?",
+    "options": [
+      "Ze dvou ozubených kol v těsné skříni, která přenáší olej ve volném prostoru mezi zuby po obvodu",
+      "Z jednoho velkého pístu a hřídele s vačkou",
+      "Z klikové hřídele a turbíny",
+      "Z větráku a sacího koše"
+    ],
+    "correct": 0,
+    "explanation": "Zubová čerpadla sají olej do mezer mezi zuby a tělesem čerpadla a přemisťují ho po obvodu (ne středem!) z prostoru sání na výtlak."
+  },
+  {
+    "q": "Proč je stlačený vzduch z hlediska ekonomiky považován za velmi drahé médium?",
+    "options": [
+      "Protože je do něj nutné přimíchávat zlato",
+      "Účinnost přeměny elektřiny kompresorem na tlakový vzduch je velmi nízká (velká část jde do ztrátového tepla) a úniky jsou drahé",
+      "Protože jsou trubky velmi drahé na instalaci",
+      "Protože kompresory spotřebují spoustu drahé vody"
+    ],
+    "correct": 1,
+    "explanation": "Až 90% elektrické energie při kompresi vzduchu se přemění na teplo. Každá syčící netěsnost stojí obrovské peníze."
+  },
+  {
+    "q": "Co má za úkol zpětný ventil s pružinou v hydraulickém obvodu?",
+    "options": [
+      "Otáčet tokem oleje doprava nebo doleva",
+      "Zabránit přetížení obvodu a propustit olej do nádrže při přetlaku (to dělá pojistný ventil!)",
+      "Umožnit průtok oleje pouze jedním směrem a ve druhém směru jej spolehlivě uzavřít",
+      "Zahřívat olej při zimních startech"
+    ],
+    "correct": 2,
+    "explanation": "Zpětný ventil se otevírá silou kapaliny proti slabé pružince. Jakmile kapalina zatlačí opačně, ventil zapadne do sedla a průtok utěsní."
+  }
+]

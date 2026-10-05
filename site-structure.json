@@ -66,6 +66,13 @@
   "sttCards": [
     {
       "id": "doc",
+      "title": "📈 Animace: Tahová zkouška oceli",
+      "href": "animace-tahovka.html",
+      "target": "_blank",
+      "status": "ready"
+    },
+    {
+      "id": "doc",
       "title": "🔥 Animace: Druhy svařovacích plamenů",
       "href": "animace-svarovani.html",
       "target": "_blank",
@@ -4806,6 +4813,13 @@
   "cncCards": [
     {
       "id": "doc",
+      "title": "🔴 Animace: CNC Interpolace a G-kódy",
+      "href": "animace-drahy.html",
+      "target": "_blank",
+      "status": "ready"
+    },
+    {
+      "id": "doc",
       "title": "Základy ovládání software Sinumerik 810 M",
       "href": "Základy ovládání software Sinumerik 810 M.pdf",
       "target": "_blank",
@@ -5478,6 +5492,13 @@
     }
   ],
   "mteCards": [
+    {
+      "id": "doc",
+      "title": "🌬️ Animace: Pneumatický válec",
+      "href": "animace-valec.html",
+      "target": "_blank",
+      "status": "ready"
+    },
     {
       "id": "doc",
       "title": "Protokol",

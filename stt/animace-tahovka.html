@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tahová zkouška | Výukový portál</title>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  body { background: #fbf8f3; font-family: 'IBM Plex Sans', sans-serif; text-align: center; padding: 48px; }
+  .box { background: #fff; padding: 32px; border-radius: 16px; display: inline-block; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+  h2 { font-family: 'Quicksand', sans-serif; color: #b0561f; }
+  canvas { border-left: 2px solid #231d16; border-bottom: 2px solid #231d16; margin: 16px; }
+  button { padding: 10px 20px; font-size: 16px; font-weight: bold; border-radius: 8px; border: 1px solid #ded3c2; background: #fff; cursor: pointer; transition: 0.2s; }
+  button:hover { background: #d4f1d4; color: #15561d; border-color: #15561d;}
+</style>
+</head>
+<body>
+  <div class="box">
+    <a href="../stt/index.html" style="color:#b0561f; text-decoration:none; font-weight:600; display:block; text-align:left;">&larr; Zpět na STT</a>
+    <h2>Tahová zkouška (Ocel se zřetelnou mezí kluzu)</h2>
+    <div style="display:flex; justify-content:center; align-items:center;">
+      <canvas id="c" width="400" height="300"></canvas>
+      <svg width="100" height="300">
+        <rect x="30" y="20" width="40" height="20" fill="#5c5346"/>
+        <rect x="30" y="260" width="40" height="20" fill="#5c5346"/>
+        <!-- Sample -->
+        <rect id="sample" x="40" y="40" width="20" height="220" fill="#b0c4de" stroke="#5c5346" />
+      </svg>
+    </div>
+    <button onclick="runTest()">Spustit trhací zkoušku</button>
+  </div>
+<script>
+  const canvas = document.getElementById('c');
+  const ctx = canvas.getContext('2d');
+  
+  // Draw axes
+  ctx.font = '14px sans-serif';
+  ctx.fillText('Napětí σ [MPa]', 10, 20);
+  ctx.fillText('Prodloužení ε [%]', 280, 290);
+  
+  // Data for mild steel curve (simplified path)
+  const curve = [
+    {x:0, y:0},
+    {x:50, y:200}, // Pružná oblast (Hooke)
+    {x:60, y:200}, {x:65, y:190}, {x:75, y:195}, // Mez kluzu Re
+    {x:250, y:260}, // Mez pevnosti Rm
+    {x:350, y:210}  // Bod lomu
+  ];
+
+  function runTest() {
+    ctx.clearRect(0,0,400,300);
+    ctx.fillText('Napětí σ [MPa]', 10, 20);
+    ctx.fillText('Prodloužení ε [%]', 280, 290);
+    
+    let t = 0;
+    const sample = document.getElementById('sample');
+    
+    let intr = setInterval(() => {
+      t++;
+      if (t > 100) { clearInterval(intr); return; }
+      
+      // Calculate current point on curve
+      let progress = t / 100;
+      let targetX = progress * 350;
+      let targetY = 0;
+      
+      // Find segment
+      for(let i=0; i<curve.length-1; i++) {
+         if (targetX >= curve[i].x && targetX <= curve[i+1].x) {
+             let segPct = (targetX - curve[i].x) / (curve[i+1].x - curve[i].x);
+             targetY = curve[i].y + segPct * (curve[i+1].y - curve[i].y);
+             break;
+         }
+      }
+      
+      // Draw graph
+      ctx.beginPath();
+      ctx.moveTo(0, 300);
+      for(let i=0; i<curve.length; i++) {
+         if(curve[i].x <= targetX) {
+           ctx.lineTo(curve[i].x, 300 - curve[i].y);
+         }
+      }
+      ctx.lineTo(targetX, 300 - targetY);
+      ctx.strokeStyle = 'red';
+      ctx.lineWidth = 2;
+      ctx.stroke();
+      
+      // Animate sample visually
+      // Stretch height, narrow width
+      let currentHeight = 220 + (targetX / 5);
+      let currentWidth = 20 - (targetX / 30);
+      sample.setAttribute('height', currentHeight);
+      sample.setAttribute('width', currentWidth);
+      sample.setAttribute('x', 50 - (currentWidth / 2));
+      
+      if (t === 100) {
+        ctx.fillText('LOM 💥', targetX, 300 - targetY - 10);
+      }
+    }, 50);
+  }
+</script>
+</body>
+</html>

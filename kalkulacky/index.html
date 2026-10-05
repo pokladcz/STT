@@ -56,6 +56,35 @@
 (Převod do pomala/rychla)`;
   }
   calcCNC(); calcSPS();
+
+  const matDB = [
+    { csn: "11373", en: "S235JR", desc: "Nelegovaná konstrukční ocel obvyklé jakosti.", expl_csn: "<ul><li><b>1</b> - Ocel tvářená</li><li><b>1</b> - Třída 11 (Konstrukční nelegované oceli)</li><li><b>3</b> - Minimální pevnost v tahu (~300 MPa)</li><li><b>7</b> - Způsob výroby (uklidněná atd.)</li><li><b>3</b> - Stav materiálu (žíháno apod.)</li></ul>", expl_en: "<ul><li><b>S</b> - Structural (konstrukční ocel)</li><li><b>235</b> - Minimální mez kluzu v MPa</li><li><b>JR</b> - Zkouška rázem v ohybu (27 J při 20°C)</li></ul>" },
+    { csn: "12050", en: "C45", desc: "Nelegovaná ušlechtilá ocel pro zušlechťování.", expl_csn: "<ul><li><b>1</b> - Ocel tvářená</li><li><b>2</b> - Třída 12 (Ušlechtilé uhlíkové oceli)</li><li><b>050</b> - Střední obsah uhlíku je cca 0.50 %</li></ul>", expl_en: "<ul><li><b>C</b> - Uhlíková ocel (Carbon)</li><li><b>45</b> - Střední obsah uhlíku 0.45 %</li></ul>" },
+    { csn: "14220", en: "16MnCr5", desc: "Mangan-chromová cementační ocel (legovaná).", expl_csn: "<ul><li><b>1</b> - Ocel tvářená</li><li><b>4</b> - Třída 14 (Slitinové oceli - Cr, Mn)</li><li><b>220</b> - Doplňková čísla specifikující přesné složení</li></ul>", expl_en: "<ul><li><b>16</b> - Obsah uhlíku 0.16 %</li><li><b>Mn, Cr</b> - Legovací prvky (Mangan a Chrom)</li><li><b>5</b> - Obsah manganu je 5/4 = 1.25 %</li></ul>" },
+    { csn: "16343", en: "34CrNiMo6", desc: "Chrom-nikl-molybdenová ocel k zušlechťování na vysokou pevnost.", expl_csn: "<ul><li><b>1</b> - Ocel tvářená</li><li><b>6</b> - Třída 16 (Slitinové oceli - Ni, W, V)</li><li><b>343</b> - Specifikace pro vysokopevnostní ocel</li></ul>", expl_en: "<ul><li><b>34</b> - Obsah uhlíku 0.34 %</li><li><b>Cr, Ni, Mo</b> - Přísady Chrom, Nikl, Molybden</li><li><b>6</b> - Obsah přísad (děleno 4 u Cr/Ni) = 1.5%</li></ul>" },
+    { csn: "19312", en: "90MnCrV8", desc: "Nástrojová legovaná ocel pro práci za studena.", expl_csn: "<ul><li><b>1</b> - Ocel tvářená</li><li><b>9</b> - Třída 19 (Nástrojové oceli)</li><li><b>3</b> - Legováno Mn, Si, V</li><li><b>12</b> - Specifikace obsahu uhlíku a legur</li></ul>", expl_en: "<ul><li><b>90</b> - Obsah uhlíku 0.90 %</li><li><b>Mn, Cr, V</b> - Přísady Mangan, Chrom, Vanad</li><li><b>8</b> - Obsah přísady 8/4 = 2%</li></ul>" }
+  ];
+
+  function decodeMaterial() {
+    let val = document.getElementById('mat_input').value.toUpperCase().replace(/\s+/g, '');
+    let res = matDB.find(m => m.csn === val || m.en.toUpperCase().replace(/\s+/g, '') === val);
+    
+    const resDiv = document.getElementById('mat_res');
+    if (res) {
+      document.getElementById('mat_title').innerText = res.desc;
+      document.getElementById('mat_csn').innerText = "1" + res.csn.substring(1,2) + " " + res.csn.substring(2);
+      document.getElementById('mat_en').innerText = res.en;
+      document.getElementById('mat_explanation').innerHTML = "<h4>Rozpad značení ČSN:</h4>" + res.expl_csn + "<h4>Rozpad značení EN:</h4>" + res.expl_en;
+      resDiv.style.display = 'block';
+    } else {
+      resDiv.style.display = 'block';
+      document.getElementById('mat_title').innerText = "Materiál nebyl nalezen v lokální databázi.";
+      document.getElementById('mat_csn').innerText = "N/A";
+      document.getElementById('mat_en').innerText = "N/A";
+      document.getElementById('mat_explanation').innerHTML = "Zkuste zadat např. <b>12 050</b>, <b>C45</b>, <b>14220</b> nebo <b>16MnCr5</b>.";
+    }
+  }
+
 </script>
 </body>
 </html>

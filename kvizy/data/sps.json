@@ -1,0 +1,167 @@
+[
+  {
+    "q": "Jaký je hlavní účel ložisek v převodovkách?",
+    "options": [
+      "Snižovat hmotnost hřídele",
+      "Zajišťovat přenos tepla",
+      "Zachycovat radiální a axiální síly a snižovat tření",
+      "Zvyšovat kroutící moment"
+    ],
+    "correct": 2,
+    "explanation": "Ložiska umožňují uložení rotujících součástí (hřídelů) v rámu, snižují tření a přenášejí síly z hřídele na skříň."
+  },
+  {
+    "q": "Co znamená u závitu označení M12?",
+    "options": [
+      "Trubkový závit s průměrem 12 palců",
+      "Metrický závit s velkým průměrem 12 mm",
+      "Jemný metrický závit s průměrem 12 mm",
+      "Lichoběžníkový závit o stoupání 12 mm"
+    ],
+    "correct": 1,
+    "explanation": "Písmeno M označuje metrický závit (vrcholový úhel 60°) a číslo 12 jeho velký (vnější) průměr v milimetrech."
+  },
+  {
+    "q": "Z čeho se skládá modul ozubeného kola (m)?",
+    "options": [
+      "Je to podíl rozteče (p) a Ludolfova čísla (π)",
+      "Je to průměr roztečné kružnice dělený šířkou zubu",
+      "Je to součin počtu zubů a průměru",
+      "Je to poměr otáček hnacího a hnaného kola"
+    ],
+    "correct": 0,
+    "explanation": "Modul ozubení m = p / π. Je to normalizovaná hodnota, dvě do sebe zabírající kola musí mít stejný modul."
+  },
+  {
+    "q": "Jakou funkci má 'pero' (např. pero těsné) ve spojení hřídele s nábojem?",
+    "options": [
+      "Přenáší kroutící moment mezi hřídelí a nábojem",
+      "Zajišťuje součástku proti axiálnímu posunutí",
+      "Těsní olej uvnitř převodovky",
+      "Působí jako pružina"
+    ],
+    "correct": 0,
+    "explanation": "Pero (pero těsné, Woodruffovo) tvoří tvarový spoj, který zachycuje a přenáší kroutící moment."
+  },
+  {
+    "q": "Co je to 'hydrodynamická spojka'?",
+    "options": [
+      "Spojka fungující na principu tření lamel",
+      "Spojka přenášející moment kinetickou energií kapaliny (čerpadlo a turbína)",
+      "Pevná spojka pro spojení dvou souosých hřídelů",
+      "Zubová spojka ovládaná tlakem oleje"
+    ],
+    "correct": 1,
+    "explanation": "Hydrodynamická spojka se skládá z čerpadlového a turbínového kola a přenáší výkon plynule pomocí kapaliny."
+  },
+  {
+    "q": "Co označuje číslo '8.8' na hlavičce pevnostního šroubu?",
+    "options": [
+      "Délku a průměr šroubu",
+      "Materiál (nerezová ocel)",
+      "Mez pevnosti 800 MPa a mez kluzu 640 MPa (80% z 800)",
+      "Hmotnost šroubu v gramech"
+    ],
+    "correct": 2,
+    "explanation": "První číslo (8) x 100 = Mez pevnosti v tahu Rm [MPa]. Druhé číslo (8) znamená, že mez kluzu Re je 80 % z Rm."
+  },
+  {
+    "q": "Jaký je princip evolventního ozubení?",
+    "options": [
+      "Zuby mají tvar kružnice",
+      "Zuby jsou tvořeny evolventou křivky (odvalování přímky po základní kružnici)",
+      "Zuby jsou rovné lichoběžníky",
+      "Zuby se nedotýkají vůbec"
+    ],
+    "correct": 1,
+    "explanation": "Boky zubů většiny ozubených kol jsou tvořeny evolventou, což zajišťuje konstantní převodový poměr a plynulý záběr."
+  },
+  {
+    "q": "K čemu slouží křížový kloub (Kardanův kloub)?",
+    "options": [
+      "Ke spojení dvou různoběžných hřídelů, jejichž úhel se může i měnit",
+      "K utěsnění hřídele proti úniku oleje",
+      "Ke spojení hřídelů pro snížení otáček na polovinu",
+      "Ke kompenzaci teplotní roztažnosti"
+    ],
+    "correct": 0,
+    "explanation": "Kardanův kloub umožňuje přenos rotačního pohybu mezi hřídeli, které nejsou v ose a svírají spolu určitý úhel."
+  },
+  {
+    "q": "Co je to 'náprava' oproti 'hřídeli'?",
+    "options": [
+      "Náprava je silnější",
+      "Náprava nepřenáší kroutící moment (není namáhána na krut, jen na ohyb), hřídel ano",
+      "Hřídel se na rozdíl od nápravy netočí",
+      "Je to to samé"
+    ],
+    "correct": 1,
+    "explanation": "Hřídel přenáší kroutící moment a je namáhána na krut i ohyb. Náprava nese kola (je namáhána na ohyb), ale kroutící moment nepřenáší."
+  },
+  {
+    "q": "Jaký typ řemenu se používá v automobilovém průmyslu pro přesné rozvody motoru?",
+    "options": [
+      "Klínový řemen",
+      "Plochý řemen",
+      "Ozubený řemen",
+      "Kruhový řemen"
+    ],
+    "correct": 2,
+    "explanation": "Ozubený řemen se nesmeká (tvarový styk) a zajišťuje přesnou synchronizaci klikového a vačkového hřídele."
+  },
+  {
+    "q": "K čemu slouží synchronizační spojka v manuální převodovce?",
+    "options": [
+      "K automatickému řazení nahoru",
+      "K vyrovnání obvodových rychlostí ozubených kol před jejich zasunutím do záběru",
+      "K propojení přední a zadní nápravy",
+      "K tlumení rázů motoru"
+    ],
+    "correct": 1,
+    "explanation": "Synchronizační spojka využívá třecí kužely k plynulému vyrovnání otáček kol a hřídele, čímž zabraňuje 'škrtání' zubů při řazení."
+  },
+  {
+    "q": "Jak funguje hydrostatický převod?",
+    "options": [
+      "Přenáší energii pomocí tlaku kapaliny (hydraulické čerpadlo -> hydromotor)",
+      "Přenáší energii kinetickou silou proudu kapaliny",
+      "Přenáší sílu podtlakem",
+      "Jedná se o klasickou mechanickou převodovku v olejové lázni"
+    ],
+    "correct": 0,
+    "explanation": "Hydrostatický převod generuje tlak (hydraulické čerpadlo), který se v hydromotoru opět mění na mechanickou práci."
+  },
+  {
+    "q": "Kde se s výhodou používá šnekové soukolí?",
+    "options": [
+      "Při požadavku na velké otáčky bez přenosu síly",
+      "Kde potřebujeme kříživoběžné hřídele a velký převodový poměr (až samosvornost)",
+      "U jízdních kol a motocyklů",
+      "Když potřebujeme soukolí s účinností 99%"
+    ],
+    "correct": 1,
+    "explanation": "Šnekové soukolí se používá u hřídelů křížících se v úhlu 90°, poskytuje velký převod do pomala na malém prostoru a může být samosvorné."
+  },
+  {
+    "q": "Který mechanismus převede rotační pohyb na přímočarý vratný?",
+    "options": [
+      "Planetová převodovka",
+      "Klikový mechanismus (nebo vačkový)",
+      "Variátor",
+      "Kardanova hřídel"
+    ],
+    "correct": 1,
+    "explanation": "Klikový mechanismus (ojnice, klika, píst) konvertuje posuvný pohyb na rotační (spalovací motor) nebo naopak (kompresor, čerpadlo)."
+  },
+  {
+    "q": "Co udává zdvihový objem válce (tzv. kubatura)?",
+    "options": [
+      "Celý objem válce včetně kompresního prostoru",
+      "Objem určený průměrem válce a vzdáleností mezi horní a dolní úvratí pístu (Vz = (π*d^2)/4 * z)",
+      "Množství paliva spotřebovaného za minutu",
+      "Objem chladící kapaliny motoru"
+    ],
+    "correct": 1,
+    "explanation": "Zdvihový objem je rozdíl objemu válce mezi dolní a horní úvratí pístu. Větší objem obvykle znamená vyšší točivý moment motoru."
+  }
+]

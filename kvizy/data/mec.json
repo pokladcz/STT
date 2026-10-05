@@ -1,0 +1,167 @@
+[
+  {
+    "q": "Jaký je vzorec pro výpočet normálového napětí (σ) v tahu?",
+    "options": [
+      "σ = F * A",
+      "σ = F / A",
+      "σ = M / W",
+      "σ = E * F"
+    ],
+    "correct": 1,
+    "explanation": "Normálové napětí v tahu nebo tlaku se vypočítá jako podíl síly (F) a průřezové plochy (A)."
+  },
+  {
+    "q": "Co popisuje Hookeův zákon?",
+    "options": [
+      "Pružnou (elastickou) deformaci materiálu (σ = E * ε)",
+      "Tření dvou ploch proti sobě",
+      "Rovnováhu momentů na páce",
+      "Zpevnění materiálu po překročení meze kluzu"
+    ],
+    "correct": 0,
+    "explanation": "Hookeův zákon definuje lineární závislost mezi napětím (σ) a poměrným prodloužením (ε) v oblasti pružné deformace pomocí modulu pružnosti (E)."
+  },
+  {
+    "q": "Kde se u ohýbaného nosníku vyskytuje maximální normálové napětí?",
+    "options": [
+      "V neutrální ose (uprostřed průřezu)",
+      "V místě podpor (reakcí)",
+      "V krajních vláknech průřezu (nejdále od neutrální osy)",
+      "V těžišti nosníku"
+    ],
+    "correct": 2,
+    "explanation": "Při ohybu je neutrální osa bez napětí, zatímco vlákna na okraji profilu jsou natahována nebo stlačována největší silou (σ_max = M / W)."
+  },
+  {
+    "q": "Co vyjadřuje Wöhlerova křivka?",
+    "options": [
+      "Závislost síly na prodloužení u tahové zkoušky",
+      "Závislost rozkmitu napětí na počtu cyklů do únavového lomu",
+      "Rychlost chladnutí kalené oceli",
+      "Grafické znázornění těžiště nepravidelných ploch"
+    ],
+    "correct": 1,
+    "explanation": "Wöhlerova křivka znázorňuje únavu materiálu. Ukazuje, po kolika cyklech střídavého namáhání praskne vzorek při daném napětí, a definuje tzv. mez únavy."
+  },
+  {
+    "q": "Jaký vliv má vrub (zápich, díra, ostrý přechod) na pevnost součásti?",
+    "options": [
+      "Zvyšuje pevnost materiálu",
+      "Způsobuje koncentraci napětí a výrazně snižuje únavovou pevnost",
+      "Nemá vliv na pevnost, mění jen hmotnost",
+      "Prodlužuje životnost"
+    ],
+    "correct": 1,
+    "explanation": "Vrub funguje jako 'koncentrátor napětí', kde se napětí lokálně extrémně zvýší. U střídavého namáhání je to nejčastější iniciátor únavových trhlin."
+  },
+  {
+    "q": "Co znamená vzpěrná pevnost (vzpěr)?",
+    "options": [
+      "Namáhání dlouhého a štíhlého prutu tlakem, při kterém hrozí jeho vybočení (zhroucení)",
+      "Namáhání hřídele kroutícím momentem",
+      "Pružné protažení šroubu",
+      "Zkouška tvrdosti"
+    ],
+    "correct": 0,
+    "explanation": "Vzpěr je stav ztráty stability u dlouhých štíhlých prutů (např. sloup, pístnice), kdy se prut při tlakovém zatížení ohne do strany ještě dříve, než se materiál rozdrtí."
+  },
+  {
+    "q": "Jaký vztah platí pro výpočet momentu síly (M)?",
+    "options": [
+      "M = m * a",
+      "M = F * r (síla krát rameno)",
+      "M = F / S",
+      "M = v * t"
+    ],
+    "correct": 1,
+    "explanation": "Moment síly je dán velikostí působící síly a délkou ramene, na kterém síla působí kolmo k ose otáčení."
+  },
+  {
+    "q": "Co znamená třetí Newtonův zákon (Zákon akce a reakce)?",
+    "options": [
+      "Těleso setrvává v klidu nebo rovnoměrném pohybu, dokud není donuceno stav změnit",
+      "Zrychlení tělesa je úměrné síle",
+      "Každá síla (akce) vyvolává stejně velkou sílu opačného směru (reakci)",
+      "Třecí síla závisí na normálové síle"
+    ],
+    "correct": 2,
+    "explanation": "Když působí těleso 1 na těleso 2 silou (akcí), působí současně těleso 2 na těleso 1 stejně velkou silou (reakcí) opačného směru."
+  },
+  {
+    "q": "Kdy nastává smykové namáhání?",
+    "options": [
+      "Když na těleso působí dvojice sil stejného směru mimo osu",
+      "Když dvě rovnoběžné, těsně u sebe ležící síly působí proti sobě a mají snahu materiál přestřihnout",
+      "Při kroucení hřídele",
+      "Když tahová síla protáhne prut o 10%"
+    ],
+    "correct": 1,
+    "explanation": "Smyk (střih) vzniká působením posouvajících sil v rovině průřezu. Typickým případem jsou čepy, nýty nebo stříhání plechu."
+  },
+  {
+    "q": "Co je to Modul pružnosti v tahu (E, tzv. Youngův modul)?",
+    "options": [
+      "Je to konstanta materiálu vyjadřující jeho tuhost (odpor proti pružné deformaci)",
+      "Je to maximální pevnost v tahu (Rm)",
+      "Je to tloušťka materiálu po ohybu",
+      "Udává, o kolik procent se materiál prodlouží do přetržení"
+    ],
+    "correct": 0,
+    "explanation": "Youngův modul (E) je mírou tuhosti materiálu. Ocel má E cca 210 000 MPa, hliník jen cca 70 000 MPa (je poddajnější)."
+  },
+  {
+    "q": "Co udává Poissonovo číslo (μ nebo ν)?",
+    "options": [
+      "Závislost pevnosti a teploty",
+      "Poměr příčného zúžení k podélnému prodloužení při tahovém namáhání",
+      "Koeficient statického tření mezi ocelí a litinou",
+      "Počet zkoušek potřebných pro Wöhlerovu křivku"
+    ],
+    "correct": 1,
+    "explanation": "Když prut natáhnete, nejen že se prodlouží, ale také zúží v průměru. Tento poměr popisuje Poissonovo číslo (u oceli obvykle 0.3)."
+  },
+  {
+    "q": "Soustava sil působících v rovině do jednoho bodu je v rovnováze, když...",
+    "options": [
+      "Jsou všechny síly rovnoběžné",
+      "Součet velikostí všech sil se rovná hmotnosti tělesa",
+      "Vektorový součet všech sil je roven nule (součet x-ových i y-ových složek = 0)",
+      "Žádná síla na těleso nepůsobí"
+    ],
+    "correct": 2,
+    "explanation": "Pro rovnováhu bodu musí platit suma Fx = 0 a suma Fy = 0."
+  },
+  {
+    "q": "Který parametr průřezu určuje jeho tuhost proti ohybu?",
+    "options": [
+      "Plocha průřezu (A)",
+      "Kvadratický moment průřezu (Ix, Iy)",
+      "Průřezový modul v ohybu (W)",
+      "Hustota materiálu (ρ)"
+    ],
+    "correct": 1,
+    "explanation": "Kvadratický moment průřezu (I) závisí na tvaru profilu a rozložení hmoty od neutrální osy. Čím více hmoty je dál od osy (I-profil), tím lépe odolává ohybu."
+  },
+  {
+    "q": "Na co se používá Steinerova věta?",
+    "options": [
+      "K výpočtu otáček na CNC stroji",
+      "K výpočtu modulu pružnosti E",
+      "K výpočtu kvadratického momentu průřezu k ose, která neprochází jeho těžištěm",
+      "K určení tažnosti materiálu"
+    ],
+    "correct": 2,
+    "explanation": "Steinerova věta umožňuje vypočítat kvadratický moment plochy ke zvolené ose tím, že k momentu k těžišťové ose přičteme součin plochy a čtverce vzdálenosti obou os."
+  },
+  {
+    "q": "Jaký průřez hřídele nejlépe přenáší namáhání krutem vzhledem ke své hmotnosti?",
+    "options": [
+      "Plný kruh",
+      "Dutý kruh (trubka)",
+      "Čtverec",
+      "Obdélník"
+    ],
+    "correct": 1,
+    "explanation": "Při krutu je napětí největší na vnějším okraji a směrem ke středu klesá k nule. Materiál uprostřed nepracuje, proto je trubka mnohem efektivnější z hlediska úspory hmotnosti."
+  }
+]

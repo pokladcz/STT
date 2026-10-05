@@ -5,21 +5,37 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Kvízy | Výukový portál</title>
 <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../modern.css">
 <style>
   body { background: #fbf8f3; font-family: 'IBM Plex Sans', sans-serif; color: #231d16; margin: 0; padding: 48px; }
   h1 { font-family: 'Quicksand', sans-serif; color: #b0561f; font-size: 32px; }
-  .card { display: block; background: #fff; border: 1px solid #ded3c2; padding: 24px; border-radius: 12px; margin-bottom: 16px; text-decoration: none; color: inherit; transition: box-shadow 0.2s, transform 0.2s; }
-  .card:hover { box-shadow: 0 8px 24px rgba(35,29,22,0.1); transform: translateY(-2px); }
-  .title { font-weight: 600; font-size: 20px; font-family: 'Quicksand', sans-serif; }
-  .desc { color: #5c5346; margin-top: 8px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin-top: 24px; }
+  .card { display: block; background: #fff; border: 1px solid #ded3c2; padding: 24px; border-radius: 12px; text-decoration: none; color: inherit; }
+  .icon-title { display: flex; align-items: center; gap: 12px; font-weight: 600; font-size: 20px; font-family: 'Quicksand', sans-serif; }
+  .desc { color: #5c5346; margin-top: 8px; font-size: 15px; }
+  .icon-emoji { font-size: 28px; }
 </style>
 </head>
 <body>
   <a href="../index.html" style="color: #b0561f; text-decoration: none; font-weight: 600;">&larr; Zpět na rozcestník</a>
   <h1>Seznam Kvízů</h1>
-  <a href="quiz.html?subject=stt" class="card">
-    <div class="title">Strojírenská Technologie (STT)</div>
-    <div class="desc">Otestujte své znalosti z koroze, tváření, tepelného zpracování a odlévání.</div>
-  </a>
+  <div class="grid">
+    <a href="quiz.html?subject=stt" class="card subject-card">
+      <div class="icon-title"><span class="icon-emoji">🔥</span> Strojírenská Technologie (STT)</div>
+      <div class="desc">Otestujte své znalosti z koroze, tváření, tepelného zpracování, odlévání a obrábění.</div>
+    </a>
+    <a href="quiz.html?subject=sps" class="card subject-card">
+      <div class="icon-title"><span class="icon-emoji">⚙️</span> Stavba a provoz strojů (SPS)</div>
+      <div class="desc">Spoje, hřídele, ložiska, převodovky a hydraulické prvky.</div>
+    </a>
+    <a href="quiz.html?subject=mec" class="card subject-card">
+      <div class="icon-title"><span class="icon-emoji">🏗️</span> Mechanika (MEC)</div>
+      <div class="desc">Statika, pružnost a pevnost, tah, tlak, smyk a ohybové momenty.</div>
+    </a>
+    <a href="quiz.html?subject=mte" class="card subject-card">
+      <div class="icon-title"><span class="icon-emoji">🌬️</span> Měřící technika a automatizace (MTE)</div>
+      <div class="desc">Základy pneumatiky, hydrauliky a zapojení rozváděčů a válců.</div>
+    </a>
+  </div>
 </body>
 </html>

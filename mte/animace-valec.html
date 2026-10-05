@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pneumatický válec | Výukový portál</title>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  body { background: #fbf8f3; font-family: 'IBM Plex Sans', sans-serif; text-align: center; padding: 48px; }
+  .box { background: #fff; padding: 32px; border-radius: 16px; display: inline-block; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+  h2 { font-family: 'Quicksand', sans-serif; color: #b0561f; }
+  button { padding: 10px 20px; font-size: 16px; font-weight: bold; border-radius: 8px; border: 1px solid #ded3c2; background: #fff; cursor: pointer; transition: 0.2s; margin: 0 8px; }
+  button:hover { background: #e5ded2; }
+</style>
+</head>
+<body>
+  <div class="box">
+    <a href="../mte/index.html" style="color:#b0561f; text-decoration:none; font-weight:600; display:block; text-align:left;">&larr; Zpět na MTE</a>
+    <h2>Dvojčinný pneumatický válec</h2>
+    
+    <svg width="500" height="200" viewBox="0 0 500 200">
+      <!-- Válec -->
+      <rect x="50" y="50" width="200" height="100" fill="#e5ded2" stroke="#5c5346" stroke-width="4" />
+      
+      <!-- Pístnice a píst -->
+      <g id="piston" style="transition: transform 1s ease-in-out;">
+        <rect x="60" y="60" width="20" height="80" fill="#231d16" /> <!-- píst -->
+        <rect x="80" y="90" width="300" height="20" fill="#8a8072" /> <!-- tyč -->
+      </g>
+      
+      <!-- Otvory pro vzduch -->
+      <circle cx="70" cy="40" r="10" fill="#4facfe" id="air-left" style="opacity:0" />
+      <circle cx="230" cy="40" r="10" fill="#4facfe" id="air-right" style="opacity:1" />
+      <text x="65" y="30" font-family="sans-serif">A</text>
+      <text x="225" y="30" font-family="sans-serif">B</text>
+    </svg>
+
+    <div style="margin-top:24px;">
+      <button onclick="extend()">Tlak do portu A (Vysunout)</button>
+      <button onclick="retract()">Tlak do portu B (Zasunout)</button>
+    </div>
+  </div>
+<script>
+  function extend() {
+    document.getElementById('piston').style.transform = 'translateX(160px)';
+    document.getElementById('air-left').style.opacity = '1';
+    document.getElementById('air-right').style.opacity = '0';
+  }
+  function retract() {
+    document.getElementById('piston').style.transform = 'translateX(0px)';
+    document.getElementById('air-left').style.opacity = '0';
+    document.getElementById('air-right').style.opacity = '1';
+  }
+</script>
+</body>
+</html>

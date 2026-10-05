@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CNC Interpolace | Výukový portál</title>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  body { background: #fbf8f3; font-family: 'IBM Plex Sans', sans-serif; text-align: center; padding: 48px; }
+  .box { background: #fff; padding: 32px; border-radius: 16px; display: inline-block; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+  h2 { font-family: 'Quicksand', sans-serif; color: #b0561f; }
+  canvas { background: #f9f6f0; border: 1px solid #ded3c2; border-radius: 8px; margin: 16px 0; }
+  button { padding: 10px 20px; font-size: 16px; font-weight: bold; border-radius: 8px; border: 1px solid #ded3c2; background: #fff; cursor: pointer; transition: 0.2s; }
+  button:hover { background: #e5ded2; }
+  #desc { font-weight: 600; color: #15561d; height: 30px; font-size: 18px; }
+</style>
+</head>
+<body>
+  <div class="box">
+    <a href="../cnc/index.html" style="color:#b0561f; text-decoration:none; font-weight:600; display:block; text-align:left;">&larr; Zpět na CNC</a>
+    <h2>CNC Interpolace dráhy nástroje</h2>
+    <canvas id="c" width="500" height="300"></canvas>
+    <div id="desc">Vyberte kód z nabídky:</div>
+    <div style="margin-top: 16px; display:flex; gap:8px; justify-content:center;">
+      <button onclick="runG00()">G00</button>
+      <button onclick="runG01()">G01</button>
+      <button onclick="runG02()">G02</button>
+      <button onclick="runG03()">G03</button>
+    </div>
+  </div>
+<script>
+  const canvas = document.getElementById('c');
+  const ctx = canvas.getContext('2d');
+  let toolX = 50, toolY = 250;
+  let animating = false;
+
+  function drawGrid() {
+    ctx.clearRect(0,0,500,300);
+    ctx.strokeStyle = '#e5ded2';
+    for(let i=0; i<500; i+=50) {
+      ctx.beginPath(); ctx.moveTo(i,0); ctx.lineTo(i,300); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(0,i); ctx.lineTo(500,i); ctx.stroke();
+    }
+    // raw block
+    ctx.fillStyle = '#b0c4de';
+    ctx.fillRect(150, 100, 200, 150);
+  }
+
+  function drawTool(x, y) {
+    ctx.beginPath();
+    ctx.arc(x, y, 6, 0, Math.PI*2);
+    ctx.fillStyle = 'red';
+    ctx.fill();
+    ctx.strokeStyle = '#000';
+    ctx.stroke();
+  }
+
+  function animatePath(points, timeMs, color, text) {
+    if(animating) return;
+    animating = true;
+    document.getElementById('desc').innerHTML = text;
+    let start = performance.now();
+    
+    function frame(t) {
+      let progress = (t - start) / timeMs;
+      if (progress > 1) progress = 1;
+      
+      drawGrid();
+      
+      // Draw path so far
+      ctx.beginPath();
+      ctx.moveTo(points[0].x, points[0].y);
+      let curIdx = Math.floor(progress * (points.length-1));
+      for(let i=1; i<=curIdx; i++) {
+        ctx.lineTo(points[i].x, points[i].y);
+      }
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 3;
+      if (color === 'red') ctx.setLineDash([5, 5]); else ctx.setLineDash([]);
+      ctx.stroke();
+      ctx.setLineDash([]);
+      
+      toolX = points[curIdx].x;
+      toolY = points[curIdx].y;
+      drawTool(toolX, toolY);
+      
+      if (progress < 1) requestAnimationFrame(frame);
+      else animating = false;
+    }
+    requestAnimationFrame(frame);
+  }
+
+  function runG00() {
+    let pts = [];
+    for(let i=0; i<=20; i++) pts.push({x: 50 + (100)*i/20, y: 250 - (150)*i/20});
+    animatePath(pts, 500, 'red', '<span style="color:red">G00 - Rychloposuv:</span> Pohyb mimo materiál maximální rychlostí stroje.');
+  }
+  function runG01() {
+    let pts = [];
+    for(let i=0; i<=100; i++) pts.push({x: 150 + (200)*i/100, y: 100});
+    animatePath(pts, 2000, 'green', '<span style="color:green">G01 - Lineární interpolace:</span> Pracovní posuv po přímce (např. soustružení válce).');
+  }
+  function runG02() {
+    let pts = [];
+    for(let i=0; i<=100; i++) {
+      let a = Math.PI - (Math.PI/2)*i/100; // 180 to 90 deg
+      pts.push({x: 250 + 100*Math.cos(a), y: 200 - 100*Math.sin(a)});
+    }
+    animatePath(pts, 2000, 'blue', '<span style="color:blue">G02 - Kruhová interpolace CW:</span> Pracovní posuv po oblouku po směru hodin.');
+  }
+  function runG03() {
+    let pts = [];
+    for(let i=0; i<=100; i++) {
+      let a = Math.PI*1.5 + (Math.PI/2)*i/100; // 270 to 360
+      pts.push({x: 150 + 100*Math.cos(a), y: 200 + 100*Math.sin(a)}); // adjusted just for visuals
+    }
+    animatePath(pts, 2000, '#b0561f', '<span style="color:#b0561f">G03 - Kruhová interpolace CCW:</span> Pracovní posuv po oblouku proti směru hodin.');
+  }
+  
+  drawGrid(); drawTool(50,250);
+</script>
+</body>
+</html>
