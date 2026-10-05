@@ -5,6 +5,10 @@
       "href": "index.html"
     },
     {
+      "title": "STT",
+      "href": "stt/index.html"
+    },
+    {
       "title": "SPS",
       "href": "sps/index.html"
     },
@@ -28,39 +32,9 @@
   "home": {
     "cards": [
       {
-        "id": "vnitrni-stavba",
-        "title": "Vnitřní stavba kovů a tepelné zpracování",
-        "href": "vnitrni-stavba-kovu-a-tz/index.html?view=home",
-        "status": "ready"
-      },
-      {
-        "id": "koroze",
-        "title": "Koroze",
-        "href": "koroze/index.html",
-        "status": "ready"
-      },
-      {
-        "id": "tvareni",
-        "title": "Tváření",
-        "href": "tvareni-za-tepla/index.html",
-        "status": "ready"
-      },
-      {
-        "id": "praskova-metalurgie",
-        "title": "Prášková metalurgie",
-        "href": "praskova-metalurgie/index.html",
-        "status": "ready"
-      },
-      {
-        "id": "znaceni-oceli",
-        "title": "Značení ocelí dle EN",
-        "href": "znaceni-oceli/index.html",
-        "status": "ready"
-      },
-      {
-        "id": "odlevani",
-        "title": "Odlévání",
-        "href": "odlevani/index.html",
+        "id": "stt",
+        "title": "Strojírenská technologie (STT)",
+        "href": "stt/index.html",
         "status": "ready"
       },
       {
@@ -93,32 +67,38 @@
     {
       "id": "vnitrni-stavba",
       "title": "Vnitřní stavba kovů a tepelné zpracování",
-      "href": "../vnitrni-stavba-kovu-a-tz/index.html?view=home"
+      "href": "../vnitrni-stavba-kovu-a-tz/index.html?view=home",
+      "status": "ready"
     },
     {
       "id": "koroze",
       "title": "Koroze",
-      "href": "../koroze/index.html"
+      "href": "../koroze/index.html",
+      "status": "ready"
     },
     {
       "id": "tvareni",
       "title": "Tváření",
-      "href": "../tvareni-za-tepla/index.html"
+      "href": "../tvareni-za-tepla/index.html",
+      "status": "ready"
     },
     {
       "id": "praskova-metalurgie",
       "title": "Prášková metalurgie",
-      "href": "../praskova-metalurgie/index.html"
+      "href": "../praskova-metalurgie/index.html",
+      "status": "ready"
     },
     {
       "id": "znaceni-oceli",
       "title": "Značení ocelí dle EN",
-      "href": "../znaceni-oceli/index.html"
+      "href": "../znaceni-oceli/index.html",
+      "status": "ready"
     },
     {
       "id": "odlevani",
       "title": "Odlévání",
-      "href": "../odlevani/index.html"
+      "href": "../odlevani/index.html",
+      "status": "ready"
     }
   ],
   "spsCards": [
