@@ -17,10 +17,6 @@
       "href": "mec/index.html"
     },
     {
-      "title": "ROBOTIKA",
-      "href": "robotika/index.html"
-    },
-    {
       "title": "CNC",
       "href": "cnc/index.html"
     },
@@ -54,12 +50,6 @@
         "status": "ready"
       },
       {
-        "id": "robotika",
-        "title": "Robotika",
-        "href": "robotika/index.html",
-        "status": "ready"
-      },
-      {
         "id": "cnc",
         "title": "CNC Programování",
         "href": "cnc/index.html",
@@ -77,32 +67,32 @@
     {
       "id": "vnitrni-stavba",
       "title": "Vnitřní stavba kovů a tepelné zpracování",
-      "href": "vnitrni-stavba-kovu-a-tz/index.html?view=home"
+      "href": "../vnitrni-stavba-kovu-a-tz/index.html?view=home"
     },
     {
       "id": "koroze",
       "title": "Koroze",
-      "href": "koroze/index.html"
+      "href": "../koroze/index.html"
     },
     {
       "id": "tvareni",
       "title": "Tváření",
-      "href": "tvareni-za-tepla/index.html"
+      "href": "../tvareni-za-tepla/index.html"
     },
     {
       "id": "praskova-metalurgie",
       "title": "Prášková metalurgie",
-      "href": "praskova-metalurgie/index.html"
+      "href": "../praskova-metalurgie/index.html"
     },
     {
       "id": "znaceni-oceli",
       "title": "Značení ocelí dle EN",
-      "href": "znaceni-oceli/index.html"
+      "href": "../znaceni-oceli/index.html"
     },
     {
       "id": "odlevani",
       "title": "Odlévání",
-      "href": "odlevani/index.html"
+      "href": "../odlevani/index.html"
     }
   ],
   "spsCards": [
