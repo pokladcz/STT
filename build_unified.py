@@ -1,11 +1,85 @@
-<!DOCTYPE html>
+import os
+import json
+import codecs
+
+base_dir = r"C:\Users\pokla\STT-fork"
+
+subjects = {
+    "stt": {"title": "Strojírenská technologie (STT)", "icon": "stt"},
+    "sps": {"title": "Stavba a provoz strojů (SPS)", "icon": "sps"},
+    "mec": {"title": "Mechanika (MEC)", "icon": "mec"},
+    "robotika": {"title": "Robotika", "icon": "robotika"},
+    "cnc": {"title": "CNC Programování", "icon": "cnc"},
+    "mte": {"title": "Měření a testování (MTE)", "icon": "mte"}
+}
+
+# Original STT folders
+stt_folders = [
+    {"id": "vnitrni-stavba", "title": "Vnitřní stavba kovů a tepelné zpracování", "href": "vnitrni-stavba-kovu-a-tz/index.html?view=home"},
+    {"id": "koroze", "title": "Koroze", "href": "koroze/index.html"},
+    {"id": "tvareni", "title": "Tváření", "href": "tvareni-za-tepla/index.html"},
+    {"id": "praskova-metalurgie", "title": "Prášková metalurgie", "href": "praskova-metalurgie/index.html"},
+    {"id": "znaceni-oceli", "title": "Značení ocelí dle EN", "href": "znaceni-oceli/index.html"},
+    {"id": "odlevani", "title": "Odlévání", "href": "odlevani/index.html"}
+]
+
+site_structure = {
+    "nav": [
+        {"title": "Domů", "href": "index.html"}
+    ],
+    "home": {"cards": []}
+}
+
+for key, data in subjects.items():
+    site_structure["nav"].append({"title": key.upper(), "href": f"{key}/index.html"})
+    site_structure["home"]["cards"].append({
+        "id": data["icon"],
+        "title": data["title"],
+        "href": f"{key}/index.html",
+        "status": "ready"
+    })
+
+site_structure["nav"].append({"title": "O projektu", "href": "o-projektu.html"})
+
+# Populate subject cards
+site_structure["sttCards"] = stt_folders
+
+for folder in ["sps", "mec", "robotika", "cnc", "mte"]:
+    cards = []
+    folder_path = os.path.join(base_dir, folder)
+    if os.path.exists(folder_path):
+        for file in os.listdir(folder_path):
+            if file.endswith(".pdf") or file.endswith(".html") or file.endswith(".docx"):
+                if file == "index.html": continue
+                cards.append({
+                    "id": "doc",
+                    "title": file.replace(".pdf", "").replace(".html", "").replace(".docx", "").replace("_", " "),
+                    "href": file,
+                    "target": "_blank",
+                    "status": "ready"
+                })
+    site_structure[f"{folder}Cards"] = cards
+
+# Keep the original STT sub-structures just in case
+with open(os.path.join(base_dir, "site-structure.json"), "r", encoding="utf-8") as f:
+    old_data = json.load(f)
+
+for k, v in old_data.items():
+    if k not in site_structure and k not in ["nav", "home"]:
+        site_structure[k] = v
+
+with open(os.path.join(base_dir, "site-structure.json"), "w", encoding="utf-8") as f:
+    json.dump(site_structure, f, ensure_ascii=False, indent=2)
+
+# HTML Templates
+HTML_TEMPLATE = """<!DOCTYPE html>
 <html lang="cs">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Robotika | Výukový portál</title>
+<title>{PAGE_TITLE} | Výukový portál</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%23fbf8f3'/%3E%3Ctext x='12' y='17' font-family='Georgia,serif' font-size='12' font-weight='700' fill='%23b0561f' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E">
-<script src="../support.js"></script>
+<script src="{SUPPORT_JS_PATH}"></script>
 </head>
 <body>
 <x-dc>
@@ -37,15 +111,15 @@
 <div style="min-height:100vh;background:#fbf8f3;font-family:'IBM Plex Sans',sans-serif;padding:64px 48px 80px;box-sizing:border-box">
   <div style="max-width:1080px;margin:0 auto 48px">
     <div style="display:flex;align-items:baseline;justify-content:space-between;gap:24px;flex-wrap:wrap;margin:0 0 8px">
-      <h1 style="font-family:'Quicksand',sans-serif;font-weight:700;font-size:44px;line-height:1.15;color:#231d16;margin:0">Výuka: Robotika</h1>
-      <a href="../o-projektu.html" style="display:inline-flex;align-items:center;gap:7px;font-family:'IBM Plex Sans',sans-serif;font-size:14.5px;font-weight:500;color:#8a8072;text-decoration:none;border-bottom:1px solid #ded3c2;padding-bottom:2px" style-hover="color:#231d16;border-bottom-color:#231d16">
+      <h1 style="font-family:'Quicksand',sans-serif;font-weight:700;font-size:44px;line-height:1.15;color:#231d16;margin:0">{HEADER_TITLE}</h1>
+      <a href="{O_PROJEKTU_PATH}" style="display:inline-flex;align-items:center;gap:7px;font-family:'IBM Plex Sans',sans-serif;font-size:14.5px;font-weight:500;color:#8a8072;text-decoration:none;border-bottom:1px solid #ded3c2;padding-bottom:2px" style-hover="color:#231d16;border-bottom-color:#231d16">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 11v5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="7.8" r="1.2" fill="currentColor"/></svg>
         O&nbsp;projektu
       </a>
     </div>
     
     <div style="font-family:'IBM Plex Sans',sans-serif;font-size:18px;color:#5c5346;margin-bottom:24px;font-weight:500;">
-      Vyberte si materiál nebo kapitolu
+      {SUBTITLE}
     </div>
 
     <div style="margin-bottom: 32px;">
@@ -120,7 +194,7 @@ const ICON_META = {
 class Component extends DCLogic {
   state = { structure: null };
   componentDidMount() {
-    fetch('../site-structure.json').then(r => r.json()).then(structure => this.setState({ structure })).catch(() => {});
+    fetch('{SITE_STRUCTURE_PATH}').then(r => r.json()).then(structure => this.setState({ structure })).catch(() => {});
   }
   renderVals() {
     const s = this.state.structure;
@@ -129,10 +203,10 @@ class Component extends DCLogic {
     
     const navItems = s ? s.nav.map(n => ({
         title: n.title,
-        href: n.href === 'index.html' || n.href === 'o-projektu.html' ? '../' + n.href : '../' + n.href
+        href: n.href === 'index.html' || n.href === 'o-projektu.html' ? '{ROOT_PREFIX}' + n.href : '{ROOT_PREFIX}' + n.href
     })) : [];
 
-    const cardsData = s ? s.robotikaCards : [];
+    const cardsData = s ? s.{JSON_KEY} : [];
     const cards = cardsData.map(c => {
       const ready = c.status === 'ready' || !c.status;
       const meta = ICON_META[c.id] || ICON_META['doc'];
@@ -157,3 +231,34 @@ class Component extends DCLogic {
 </script>
 </body>
 </html>
+"""
+
+# Generate root index.html
+root_html = HTML_TEMPLATE.replace("{PAGE_TITLE}", "Rozcestník")\
+                         .replace("{SUPPORT_JS_PATH}", "./support.js")\
+                         .replace("{HEADER_TITLE}", "Výukový portál Strojírenství")\
+                         .replace("{O_PROJEKTU_PATH}", "./o-projektu.html")\
+                         .replace("{SUBTITLE}", "SPŠ a VOŠ Brno, Sokolská")\
+                         .replace("{SITE_STRUCTURE_PATH}", "site-structure.json")\
+                         .replace("{ROOT_PREFIX}", "")\
+                         .replace("{JSON_KEY}", "home.cards")
+
+with open(os.path.join(base_dir, "index.html"), "w", encoding="utf-8") as f:
+    f.write(root_html)
+
+# Generate sub-hubs
+for key, data in subjects.items():
+    sub_html = HTML_TEMPLATE.replace("{PAGE_TITLE}", data["title"])\
+                             .replace("{SUPPORT_JS_PATH}", "../support.js")\
+                             .replace("{HEADER_TITLE}", f"Výuka: {data['title']}")\
+                             .replace("{O_PROJEKTU_PATH}", "../o-projektu.html")\
+                             .replace("{SUBTITLE}", "Vyberte si materiál nebo kapitolu")\
+                             .replace("{SITE_STRUCTURE_PATH}", "../site-structure.json")\
+                             .replace("{ROOT_PREFIX}", "../")\
+                             .replace("{JSON_KEY}", f"{key}Cards")
+    
+    os.makedirs(os.path.join(base_dir, key), exist_ok=True)
+    with open(os.path.join(base_dir, key, "index.html"), "w", encoding="utf-8") as f:
+        f.write(sub_html)
+
+print("Unified architecture built.")
