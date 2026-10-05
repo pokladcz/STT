@@ -16,6 +16,12 @@
   <style>
     html, body { margin: 0; background: #fbf8f3; }
     a { color: inherit; text-decoration: none; }
+  
+    @media (max-width: 900px) { #cardsContainer { grid-template-columns: repeat(2, 1fr) !important; } }
+    @media (max-width: 600px) { #cardsContainer { grid-template-columns: 1fr !important; } }
+    /* Fix header wrapping */
+    h1 { font-size: 32px !important; }
+    
   </style>
   <script>
     document.addEventListener('mouseover', function(e){ var el = e.target.closest('.site-nav-toggle'); if (el) el.style.maxHeight = el.scrollHeight + 'px'; });
