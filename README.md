@@ -2,51 +2,63 @@
 
 Tento projekt je interaktivní výukový portál pro strojírenské předměty, vytvořený na míru pro studenty a učitele **Střední průmyslové školy a Vyšší odborné školy Brno, Sokolská, příspěvková organizace**.
 
-Portál sjednocuje výukové materiály z různých oborů (STT, SPS, MEC, Robotika, CNC, MTE) do jednoho moderního rozhraní s interaktivními diagramy, animacemi a možností rychlého fulltextového vyhledávání.
+Portál sjednocuje výukové materiály z různých oborů do jednoho moderního rozhraní s interaktivními diagramy, animacemi a rychlým vyhledáváním.
 
 ---
 
-## 🚀 Jak otevřít stránku u sebe na počítači
+## 📚 Obsah portálu
+Na jedné úvodní obrazovce (rozcestníku) naleznete všechny dostupné materiály:
+* **Strojírenská technologie (STT):** Plně interaktivní kapitoly s animacemi (Vnitřní stavba kovů, Koroze, Tváření, Prášková metalurgie, Značení ocelí, Odlévání).
+* **Další odborné předměty:** Přehledné rozcestníky k dokumentům a materiálům pro **SPS** (Stavba a provoz strojů), **MEC** (Mechanika), **CNC** (Programování) a **MTE** (Měření a testování).
 
-Projekt využívá moderní JavaScript (asynchronní načítání struktury ze souboru `site-structure.json`). Z bezpečnostních důvodů prohlížeče (CORS policy) **nebude fungovat**, pokud na `index.html` pouze dvakrát kliknete ve složce.
+---
 
-Pro správné spuštění na vašem PC si vyberte jednu z těchto dvou jednoduchých možností:
+## 🌟 Hlavní funkce
+* 📱 **Plně responzivní:** Web se automaticky přizpůsobí (přeskládá dlaždice) pro **počítače, tablety i mobilní telefony**.
+* 🔍 **Rychlé vyhledávání:** Okamžité fulltextové filtrování dlaždic přímo na hlavní stránce.
+* 🖱️ **Interaktivní diagramy:** Krok-za-krokem animované technické postupy ideální k pochopení složité látky.
 
-### Možnost 1: Pomocí Pythonu (Doporučeno)
-Pokud máte nainstalovaný Python, otevřete si terminál (Příkazový řádek / PowerShell) přímo ve složce s tímto projektem a napište:
-```bash
-python -m http.server 8000
-```
-Následně si otevřete prohlížeč a jděte na adresu: [http://localhost:8000](http://localhost:8000).
+---
 
-### Možnost 2: Pomocí VS Code (Live Server)
-Pokud používáte editor Visual Studio Code:
-1. Nainstalujte si rozšíření **Live Server**.
-2. Klikněte pravým tlačítkem na soubor `index.html`.
-3. Zvolte **"Open with Live Server"**.
+## 🚀 Jak stránku otevřít a používat
+
+### 1. Online přístup (Kdekoliv a z jakéhokoliv zařízení)
+Portál je nasazen na GitHub Pages. Stačí otevřít tento odkaz v jakémkoliv prohlížeči (na PC, mobilu či tabletu):
+👉 **[Zobrazit Výukový portál](https://pokladcz.github.io/STT/)**
+
+### 2. Spuštění lokálně na počítači (Offline)
+Projekt využívá moderní JavaScript (asynchronní načítání ze souboru `site-structure.json`). Z bezpečnostních důvodů prohlížeče (CORS policy) *nebude fungovat*, pokud na soubor `index.html` pouze dvakrát kliknete. Musíte využít lokální server:
+
+* **Možnost A - Pomocí Pythonu (Doporučeno):**
+  Otevřete si terminál (Příkazový řádek / PowerShell) ve složce s tímto projektem a napište:
+  ```bash
+  python -m http.server 8000
+  ```
+  Následně jděte na: `http://localhost:8000`
+
+* **Možnost B - Pomocí VS Code (Live Server):**
+  Nainstalujte si rozšíření **Live Server**, klikněte pravým tlačítkem na `index.html` a zvolte **"Open with Live Server"**.
 
 ---
 
 ## 👨‍🎓 Pro studenty
-* **Rozcestník:** Na hlavní stránce si vyberte požadovaný předmět.
-* **Vyhledávání:** V horní části stránky využijte vyhledávací pole pro okamžité filtrování témat napříč všemi předměty.
-* **Plná obrazovka:** Pro nejlepší zážitek u interaktivních schémat a animací (zejména u STT a CNC) doporučujeme stisknout klávesu **F11**. Vykreslí se ve vyšším rozlišení a větší velikosti.
+* **Plná obrazovka:** Pro nejlepší zážitek u interaktivních schémat a animací (zejména u STT a CNC) doporučujeme na počítači stisknout klávesu **F11**.
+* **Vyhledávání:** Využijte vyhledávací pole v horní části hlavní stránky pro rychlé nalezení tématu.
 
 ## 👨‍🏫 Pro učitele
-Tento portál je navržen tak, aby byl ideálním nástrojem pro **promítání na projektoru v hodinách**.
-* Neobsahuje rušivé elementy, na stránce je jen probíraná látka.
-* Interaktivní fáze diagramů (např. u slitin nebo koroze) lze krokovat, což pomáhá udržet pozornost žáků.
-* Snadno přeskočíte mezi příbuznými obory (např. z CNC do Technologie).
+Tento portál je navržen jako ideální nástroj pro **promítání na projektoru v hodinách**.
+* Neobsahuje rušivé elementy, na obrazovce je jen probíraná látka.
+* Interaktivní fáze diagramů (např. u slitin nebo koroze) lze krokovat dopředu i dozadu, což pomáhá udržet pozornost žáků.
 
 ---
 
 ## 🛠️ Pro autory a přispěvatele (Jak přidat další látku)
 
-Projekt se skládá z "chytrých" šablon (např. `sablona-animace.jsx`, `support.js`) a zdrojových dat.
+Projekt se skládá z "chytrých" šablon (založených na knihovně DCLogic) a zdrojových dat v JSON.
 
 **Postup přidání nového dokumentu:**
-1. Nový soubor (PDF, HTML, Markdown) vložte do příslušné složky (např. `/cnc/` nebo `/mte/`).
-2. Pro propojení do hlavního STT menu upravte soubor `site-structure.json`. V něm se definují nadpisy, ikony a adresy URL k jednotlivým kapitolám.
-3. Pokud importujete data hromadně ze školní složky `1-skola`, můžete využít pomocný skript `import_data.py`. Ten obsah nakopíruje a automaticky vygeneruje základní indexy.
+1. Nový soubor (PDF, HTML, DOCX) vložte do příslušné oborové složky (např. `/cnc/` nebo `/mte/`).
+2. Otevřete soubor `site-structure.json` a přidejte k němu záznam do příslušného pole (např. `cncCards`). Zde se definuje název, který uvidí uživatel.
+3. Pokud do budoucna přidáváte zcela nový obor, vytvořte pro něj novou složku obsahující `index.html` (zkopírujte z jiného oboru a upravte klíč v `s.{key}`) a zaregistrujte novou dlaždici do pole `home.cards` v `site-structure.json`.
 
-*Forked and customized with ❤️ for SPŠ a VOŠ Brno, Sokolská.*
+*Vytvořeno a přizpůsobeno s ❤️ pro SPŠ a VOŠ Brno, Sokolská.*
