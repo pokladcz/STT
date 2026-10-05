@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kvíz</title>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  body { background: #fbf8f3; font-family: 'IBM Plex Sans', sans-serif; color: #231d16; margin: 0; padding: 48px; display: flex; justify-content: center; }
+  .container { background: #fff; border: 1px solid #ded3c2; padding: 32px; border-radius: 16px; max-width: 600px; width: 100%; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+  h2 { font-family: 'Quicksand', sans-serif; color: #b0561f; margin-top: 0; }
+  .option { display: block; width: 100%; text-align: left; padding: 16px; margin: 8px 0; background: #f9f6f0; border: 1px solid #ded3c2; border-radius: 8px; cursor: pointer; font-family: 'IBM Plex Sans', sans-serif; font-size: 16px; transition: all 0.2s; }
+  .option:hover { background: #f2ece4; }
+  .option.correct { background: #d4f1d4; border-color: #15561d; color: #15561d; }
+  .option.wrong { background: #ffdada; border-color: #900; color: #900; }
+  #explanation { display: none; margin-top: 16px; padding: 16px; background: #fff3cd; border-left: 4px solid #ffc107; border-radius: 4px; }
+  #nextBtn { display: none; margin-top: 24px; padding: 12px 24px; background: #b0561f; color: #fff; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div id="progress" style="color: #8a8072; font-weight: 600; margin-bottom: 16px;"></div>
+  <h2 id="question">Načítám kvíz...</h2>
+  <div id="options"></div>
+  <div id="explanation"></div>
+  <button id="nextBtn">Další otázka</button>
+</div>
+<script>
+  const urlParams = new URLSearchParams(window.location.search);
+  const subject = urlParams.get('subject') || 'stt';
+  
+  let questions = [];
+  let currentIndex = 0;
+  let score = 0;
+
+  fetch(`data/${subject}.json?v=${new Date().getTime()}`)
+    .then(r => r.json())
+    .then(data => { questions = data; showQuestion(); })
+    .catch(e => document.getElementById('question').innerText = "Chyba při načítání kvízu.");
+
+  function showQuestion() {
+    if (currentIndex >= questions.length) {
+      document.querySelector('.container').innerHTML = `<h2>Kvíz dokončen!</h2><p style="font-size:18px">Vaše skóre: <strong>${score} z ${questions.length}</strong></p><a href="index.html" style="color:#b0561f;font-weight:600;text-decoration:none;">&larr; Zpět na seznam kvízů</a>`;
+      return;
+    }
+    const q = questions[currentIndex];
+    document.getElementById('progress').innerText = `Otázka ${currentIndex + 1} z ${questions.length}`;
+    document.getElementById('question').innerText = q.q;
+    const opts = document.getElementById('options');
+    opts.innerHTML = '';
+    document.getElementById('explanation').style.display = 'none';
+    document.getElementById('nextBtn').style.display = 'none';
+
+    q.options.forEach((opt, idx) => {
+      const btn = document.createElement('button');
+      btn.className = 'option';
+      btn.innerText = opt;
+      btn.onclick = () => selectOption(btn, idx, q);
+      opts.appendChild(btn);
+    });
+  }
+
+  function selectOption(btn, idx, q) {
+    const opts = document.querySelectorAll('.option');
+    opts.forEach(b => b.disabled = true);
+    
+    if (idx === q.correct) {
+      btn.classList.add('correct');
+      score++;
+    } else {
+      btn.classList.add('wrong');
+      opts[q.correct].classList.add('correct');
+      const expl = document.getElementById('explanation');
+      expl.innerText = q.explanation;
+      expl.style.display = 'block';
+    }
+    const nextBtn = document.getElementById('nextBtn');
+    nextBtn.style.display = 'block';
+    nextBtn.onclick = () => { currentIndex++; showQuestion(); };
+  }
+</script>
+</body>
+</html>

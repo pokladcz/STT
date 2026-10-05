@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Simulátor Dílny | Výukový portál</title>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  body { background: #fbf8f3; font-family: 'IBM Plex Sans', sans-serif; margin: 0; padding: 48px; display:flex; justify-content:center; }
+  .box { background: #fff; border: 1px solid #ded3c2; padding: 32px; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); max-width: 600px; width: 100%; text-align: center;}
+  h2 { font-family: 'Quicksand', sans-serif; color: #b0561f; }
+  .btn { display: block; width: 100%; text-align: left; padding: 16px; margin: 8px 0; background: #f9f6f0; border: 1px solid #ded3c2; border-radius: 8px; cursor: pointer; transition: 0.2s; font-size:16px;}
+  .btn:hover { background: #f2ece4; }
+  #scenario-text { font-size: 18px; margin-bottom: 24px; color: #231d16; }
+</style>
+</head>
+<body>
+  <div class="box">
+    <a href="../index.html" style="color: #8a8072; text-decoration: none; font-weight: 600; display:block; text-align:left; margin-bottom:16px;">&larr; Odejít z dílny</a>
+    <h2>Situace na dílně</h2>
+    <div id="scenario-text">Soustružíš ocelovou hřídel. Zjistíš, že obrobený povrch je velmi hrubý (drsný) a nůž začíná nepříjemně pískat a vibrovat. Co uděláš?</div>
+    <div id="options">
+      <button class="btn" onclick="act(0)">A) Zvýším posuv (f), ať to mám rychleji za sebou.</button>
+      <button class="btn" onclick="act(1)">B) Snížím řeznou rychlost a přidám chladící kapalinu.</button>
+      <button class="btn" onclick="act(2)">C) Zkontroluji, zda je břit nože upnutý přesně v ose rotace a zmenším posuv.</button>
+      <button class="btn" onclick="act(3)">D) Nic, to je u oceli normální.</button>
+    </div>
+  </div>
+<script>
+  function act(choice) {
+    const text = document.getElementById('scenario-text');
+    const opts = document.getElementById('options');
+    if (choice === 2) {
+      text.innerHTML = "<strong>Správně!</strong> Nůž upnutý pod osou nebo nad osou drhne hřbetem nebo mění geometrii řezu, což způsobuje vibrace. Snížením posuvu navíc zlepšíš drsnost povrchu. Práce hotova!";
+      opts.innerHTML = '<button class="btn" onclick="location.reload()">Hrát znovu</button>';
+    } else {
+      text.innerHTML = "<strong style='color:#900'>Chyba!</strong> To situaci ještě zhoršilo. Vibrace zesílily a možná jsi ulomil destičku. Zkus to znovu.";
+      opts.innerHTML = '<button class="btn" onclick="location.reload()">Vrátit čas</button>';
+    }
+  }
+</script>
+</body>
+</html>

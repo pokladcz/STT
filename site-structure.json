@@ -65,6 +65,13 @@
   },
   "sttCards": [
     {
+      "id": "doc",
+      "title": "🔥 Animace: Druhy svařovacích plamenů",
+      "href": "animace-svarovani.html",
+      "target": "_blank",
+      "status": "ready"
+    },
+    {
       "id": "vnitrni-stavba",
       "title": "Vnitřní stavba kovů a tepelné zpracování",
       "href": "../vnitrni-stavba-kovu-a-tz/index.html?view=home",
@@ -1103,6 +1110,13 @@
     }
   ],
   "spsCards": [
+    {
+      "id": "doc",
+      "title": "⚙️ Animace: Převodový poměr ozubených kol",
+      "href": "animace-prevodovka.html",
+      "target": "_blank",
+      "status": "ready"
+    },
     {
       "id": "doc",
       "title": "00 Nastrojove materialy",

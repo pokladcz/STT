@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Svařovací plameny | Výukový portál</title>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  body { background: #fbf8f3; font-family: 'IBM Plex Sans', sans-serif; padding: 48px; text-align: center; }
+  .box { background: #fff; border: 1px solid #ded3c2; padding: 24px; border-radius: 16px; display: inline-block; max-width: 600px; width:100%; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+  .flame { height: 100px; width: 300px; margin: 0 auto; background: linear-gradient(90deg, #4facfe 0%, #00f2fe 50%, #fff 100%); border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; transition: 0.5s; clip-path: polygon(0 20%, 100% 50%, 0 80%); }
+  button { padding: 8px 16px; margin: 4px; border-radius: 8px; border: 1px solid #ded3c2; background: #fbf8f3; cursor: pointer; font-family: inherit; font-size: 16px; transition: 0.2s; }
+  button:hover { background: #e5ded2; }
+</style>
+</head>
+<body>
+  <div class="box">
+    <a href="../stt/index.html" style="color:#b0561f; text-decoration:none; font-weight:600; display:block; text-align:left; margin-bottom:16px;">&larr; Zpět</a>
+    <h2 style="font-family:'Quicksand';color:#b0561f;">Druhy svařovacích plamenů (Kyslík-Acetylen)</h2>
+    <div id="flame" class="flame"></div>
+    <p id="desc" style="font-size:18px; font-weight:bold; margin-top:24px;">Neutrální plamen (O2:C2H2 = 1:1)</p>
+    <p id="detail">Používá se pro svařování většiny ocelí. Teplota jádra cca 3100°C.</p>
+    
+    <div style="margin-top:24px;">
+      <button onclick="setFlame('nau')">Nauhličující (Více acetylenu)</button>
+      <button onclick="setFlame('neu')">Neutrální (1:1)</button>
+      <button onclick="setFlame('oxi')">Oxidační (Více kyslíku)</button>
+    </div>
+  </div>
+<script>
+  function setFlame(type) {
+    const f = document.getElementById('flame');
+    const d = document.getElementById('desc');
+    const t = document.getElementById('detail');
+    if (type === 'nau') {
+      f.style.background = 'linear-gradient(90deg, #ff9900 0%, #ffcc00 50%, #fff 100%)';
+      f.style.transform = 'scaleX(1.2)';
+      d.innerText = 'Nauhličující plamen (Přebytek acetylenu)';
+      t.innerText = 'Delší zářivý závoj. Použití: litina, hliník, navařování tvrdokovů.';
+    } else if (type === 'neu') {
+      f.style.background = 'linear-gradient(90deg, #4facfe 0%, #00f2fe 50%, #fff 100%)';
+      f.style.transform = 'scaleX(1)';
+      d.innerText = 'Neutrální plamen (O2:C2H2 = 1:1)';
+      t.innerText = 'Používá se pro svařování většiny ocelí. Teplota jádra cca 3100°C.';
+    } else {
+      f.style.background = 'linear-gradient(90deg, #0000ff 0%, #aaa 50%, #fff 100%)';
+      f.style.transform = 'scaleX(0.8)';
+      d.innerText = 'Oxidační plamen (Přebytek kyslíku)';
+      t.innerText = 'Krátký, ostrý a syčivý plamen. Použití: mosaz, bronz (zabraňuje odpařování zinku).';
+    }
+  }
+</script>
+</body>
+</html>

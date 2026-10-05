@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inženýrské kalkulačky | Výukový portál</title>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  body { background: #fbf8f3; font-family: 'IBM Plex Sans', sans-serif; color: #231d16; margin: 0; padding: 48px; }
+  h1 { font-family: 'Quicksand', sans-serif; color: #b0561f; font-size: 32px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 24px; }
+  .calc-card { background: #fff; border: 1px solid #ded3c2; padding: 24px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+  h2 { font-family: 'Quicksand', sans-serif; color: #231d16; font-size: 20px; margin-top: 0; border-bottom: 2px solid #f2ece4; padding-bottom: 8px; }
+  label { display: block; font-size: 14px; font-weight: 600; color: #5c5346; margin-top: 12px; }
+  input { width: 100%; box-sizing: border-box; padding: 10px; margin-top: 4px; border: 1px solid #ded3c2; border-radius: 8px; font-family: inherit; font-size: 16px; }
+  .result { margin-top: 16px; padding: 12px; background: #e6f7e6; border-radius: 8px; font-weight: 600; color: #15561d; }
+</style>
+</head>
+<body>
+  <a href="../index.html" style="color: #b0561f; text-decoration: none; font-weight: 600;">&larr; Zpět na rozcestník</a>
+  <h1>Inženýrské kalkulačky</h1>
+  <div class="grid">
+    <!-- CNC -->
+    <div class="calc-card">
+      <h2>CNC: Řezná rychlost a otáčky</h2>
+      <label>Průměr (d) [mm]</label>
+      <input type="number" id="cnc_d" value="50" oninput="calcCNC()">
+      <label>Řezná rychlost (vc) [m/min]</label>
+      <input type="number" id="cnc_vc" value="100" oninput="calcCNC_from_vc()">
+      <div class="result" id="cnc_res">Otáčky (n): 636.6 ot/min</div>
+    </div>
+    <!-- SPS -->
+    <div class="calc-card">
+      <h2>SPS: Převodový poměr (i)</h2>
+      <label>Hnací kolo zuby (z1)</label>
+      <input type="number" id="sps_z1" value="20" oninput="calcSPS()">
+      <label>Hnané kolo zuby (z2)</label>
+      <input type="number" id="sps_z2" value="60" oninput="calcSPS()">
+      <div class="result" id="sps_res">Převodový poměr (i): 3</div>
+    </div>
+  </div>
+<script>
+  function calcCNC() {
+    const d = parseFloat(document.getElementById('cnc_d').value);
+    const vc = parseFloat(document.getElementById('cnc_vc').value);
+    if(d && vc) {
+      const n = (vc * 1000) / (Math.PI * d);
+      document.getElementById('cnc_res').innerText = `Otáčky (n): ${n.toFixed(1)} ot/min`;
+    }
+  }
+  function calcCNC_from_vc() { calcCNC(); }
+  function calcSPS() {
+    const z1 = parseFloat(document.getElementById('sps_z1').value);
+    const z2 = parseFloat(document.getElementById('sps_z2').value);
+    if(z1 && z2) document.getElementById('sps_res').innerText = `Převodový poměr (i): ${(z2/z1).toFixed(2)}
+(Převod do pomala/rychla)`;
+  }
+  calcCNC(); calcSPS();
+</script>
+</body>
+</html>

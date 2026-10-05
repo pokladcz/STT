@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Interaktivní Výkresy | Výukový portál</title>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  body { background: #fbf8f3; font-family: 'IBM Plex Sans', sans-serif; margin: 0; padding: 48px; }
+  .container { position: relative; max-width: 800px; margin: 0 auto; background: #fff; border: 1px solid #ded3c2; padding: 24px; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+  .hotspot { position: absolute; width: 24px; height: 24px; background: #b0561f; border-radius: 50%; cursor: pointer; animation: pulse 2s infinite; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-family: sans-serif; }
+  @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(176, 86, 31, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(176, 86, 31, 0); } 100% { box-shadow: 0 0 0 0 rgba(176, 86, 31, 0); } }
+  #tooltip { display: none; position: absolute; background: #231d16; color: #fff; padding: 16px; border-radius: 8px; width: 250px; z-index: 10; font-size: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+</style>
+</head>
+<body>
+  <a href="../index.html" style="color: #b0561f; text-decoration: none; font-weight: 600;">&larr; Zpět na rozcestník</a>
+  <h1 style="text-align:center;font-family:'Quicksand';color:#b0561f;">Interaktivní Výkresy - Hotspots</h1>
+  
+  <div class="container" id="drawContainer">
+    <!-- Simple Mock SVG representing a drawing -->
+    <svg viewBox="0 0 400 200" width="100%" height="auto" style="border:1px dashed #ded3c2">
+      <rect x="50" y="80" width="300" height="40" fill="#e5ded2" stroke="#5c5346" stroke-width="2"/>
+      <rect x="100" y="60" width="200" height="80" fill="#f2ece4" stroke="#5c5346" stroke-width="2"/>
+      <text x="150" y="50" font-family="sans-serif" font-size="12">Ra 1.6</text>
+      <text x="250" y="160" font-family="sans-serif" font-size="12">ø50 H7/p6</text>
+    </svg>
+
+    <!-- Hotspots -->
+    <div class="hotspot" style="top: 25%; left: 38%;" onclick="showTooltip('Drsnost Ra 1.6: Střední aritmetická odchylka profilu je 1.6 mikrometrů. Běžně dosahováno jemným soustružením nebo hrubým broušením.', this)">?</div>
+    <div class="hotspot" style="top: 80%; left: 63%;" onclick="showTooltip('Uložení s přesahem H7/p6: Díra H7 (základní díra) a hřídel p6 (s přesahem). Používá se pro pevné spojení bez vůle.', this)">?</div>
+    
+    <div id="tooltip"></div>
+  </div>
+
+  <script>
+    function showTooltip(text, elem) {
+      const tt = document.getElementById('tooltip');
+      tt.innerText = text;
+      tt.style.display = 'block';
+      tt.style.top = (elem.offsetTop + 30) + 'px';
+      tt.style.left = elem.offsetLeft + 'px';
+    }
+    document.getElementById('drawContainer').addEventListener('mouseleave', () => {
+      document.getElementById('tooltip').style.display = 'none';
+    });
+  </script>
+</body>
+</html>

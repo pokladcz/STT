@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Převody | Výukový portál</title>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  body { background: #fbf8f3; font-family: 'IBM Plex Sans', sans-serif; text-align: center; padding: 48px;}
+  .gear { transform-origin: center; animation: spin infinite linear; }
+  @keyframes spin { 100% { transform: rotate(360deg); } }
+  .box { background: #fff; padding: 24px; border-radius: 16px; display: inline-block; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+  input[type=range] { width: 100%; margin: 16px 0; }
+</style>
+</head>
+<body>
+  <div class="box">
+    <a href="../sps/index.html" style="color:#b0561f; text-decoration:none; font-weight:600; display:block; text-align:left;">&larr; Zpět</a>
+    <h2 style="font-family:'Quicksand';color:#b0561f;">Převodový poměr</h2>
+    
+    <svg width="400" height="200" viewBox="0 0 400 200">
+      <!-- Gear 1 (Driver) -->
+      <g transform="translate(100, 100)">
+        <circle r="40" fill="#5c5346" />
+        <circle r="10" fill="#fbf8f3" />
+        <path id="g1" class="gear" d="M-5,-45 L5,-45 L10,-40 L10,40 L5,45 L-5,45 L-10,40 L-10,-40 Z M-45,-5 L-45,5 L-40,10 L40,10 L45,5 L45,-5 L40,-10 L-40,-10 Z" fill="#b0561f" style="animation-duration: 2s;" />
+      </g>
+      <!-- Gear 2 (Driven) -->
+      <g id="g2_container" transform="translate(190, 100)">
+        <circle id="g2_base" r="40" fill="#8a8072" />
+        <circle r="10" fill="#fbf8f3" />
+        <path id="g2" class="gear" d="M-5,-45 L5,-45 L10,-40 L10,40 L5,45 L-5,45 L-10,40 L-10,-40 Z M-45,-5 L-45,5 L-40,10 L40,10 L45,5 L45,-5 L40,-10 L-40,-10 Z" fill="#5c5346" style="animation-duration: 2s; animation-direction: reverse;" />
+      </g>
+    </svg>
+
+    <p style="font-size:18px;">Hnací kolo: <strong>n = 30 ot/min</strong></p>
+    <p id="out_speed" style="font-size:18px;">Hnané kolo: <strong>n = 30 ot/min</strong></p>
+    <p id="out_ratio" style="font-size:16px; color:#5c5346;">Převodový poměr i = 1</p>
+    
+    <label>Zvětšit/zmenšit hnané kolo (z2):</label>
+    <input type="range" id="ratio" min="0.5" max="2" step="0.1" value="1" oninput="updateGear()">
+  </div>
+<script>
+  function updateGear() {
+    const val = parseFloat(document.getElementById('ratio').value);
+    const g2 = document.getElementById('g2');
+    const g2c = document.getElementById('g2_container');
+    const g2b = document.getElementById('g2_base');
+    
+    // Scale gear 2
+    g2.style.transform = `scale(${val})`;
+    g2b.setAttribute('r', 40 * val);
+    
+    // Move gear 2 to mesh
+    const dist = 100 + (40 * val) + 10;
+    g2c.setAttribute('transform', `translate(${dist}, 100)`);
+    
+    // Adjust animation speed based on ratio
+    const speed1 = 2; // base speed
+    const speed2 = speed1 * val;
+    g2.style.animationDuration = `${speed2}s`;
+    
+    // Update texts
+    const n2 = 30 / val;
+    document.getElementById('out_speed').innerHTML = `Hnané kolo: <strong>n = ${n2.toFixed(1)} ot/min</strong>`;
+    document.getElementById('out_ratio').innerText = `Převodový poměr i = ${val.toFixed(2)}`;
+  }
+</script>
+</body>
+</html>
