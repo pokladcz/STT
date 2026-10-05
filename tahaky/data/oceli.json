@@ -1,0 +1,7 @@
+[
+  { "term": "C45E", "def": "Nelegovaná ušlechtilá ocel s obsahem uhlíku 0.45%, vhodná k zušlechťování." },
+  { "term": "16MnCr5", "def": "Legovaná ocel s 0.16% C, 1.25% Mn a chromem. Určena k cementování." },
+  { "term": "S235JR", "def": "Nelegovaná konstrukční ocel, mez kluzu 235 MPa." },
+  { "term": "X5CrNi18-10", "def": "Vysokolegovaná korozivzdorná ocel (austenitická), 18% Cr, 10% Ni." },
+  { "term": "E335", "def": "Ocel pro strojní součásti s minimální mezí kluzu 335 MPa." }
+]

@@ -1,0 +1,9 @@
+[
+  { "term": "G00", "def": "Rychloposuv (pohyb maximální rychlostí mimo řez)." },
+  { "term": "G01", "def": "Lineární interpolace (pracovní posuv po přímce)." },
+  { "term": "G02", "def": "Kruhová interpolace po směru hodinových ručiček." },
+  { "term": "G03", "def": "Kruhová interpolace proti směru hodinových ručiček." },
+  { "term": "M03", "def": "Zapnutí otáček vřetene po směru hodinových ručiček." },
+  { "term": "M08", "def": "Zapnutí chladící kapaliny." },
+  { "term": "M30", "def": "Konec programu a návrat na začátek." }
+]

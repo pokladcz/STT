@@ -2948,6 +2948,13 @@
   "mecCards": [
     {
       "id": "doc",
+      "title": "🌉 Animace: Ohybový moment nosníku",
+      "href": "animace-nosnik.html",
+      "target": "_blank",
+      "status": "ready"
+    },
+    {
+      "id": "doc",
       "title": "00 Nastrojove materialy",
       "href": "00_Nastrojove_materialy.html",
       "target": "_blank",

@@ -1,0 +1,8 @@
+
+/* Modern UI enhancements */
+* { box-sizing: border-box; }
+a.subject-card, .site-nav-toggle, button, input { transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1) !important; }
+.site-nav-toggle { backdrop-filter: blur(12px) !important; background: rgba(255,255,255,0.85) !important; }
+[data-theme='dark'] .site-nav-toggle { background: rgba(30,30,30,0.85) !important; }
+a.subject-card:hover { transform: translateY(-4px) !important; box-shadow: 0 12px 24px rgba(35,29,22,0.12) !important; }
+::selection { background: #b0561f; color: #fff; }

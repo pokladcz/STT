@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<title>Geometrie břitu | Výukový portál</title>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  body { background: #fbf8f3; font-family: 'IBM Plex Sans', sans-serif; text-align: center; padding: 48px; }
+  .box { background: #fff; padding: 32px; border-radius: 16px; display: inline-block; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+  h2 { font-family: 'Quicksand', sans-serif; color: #b0561f; }
+  svg { background: #f9f6f0; border-radius: 8px; margin: 16px 0; }
+  .slider-row { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 16px; }
+  .label { font-weight: bold; width: 150px; text-align: right; }
+  .val { width: 50px; text-align: left; }
+</style>
+</head>
+<body>
+  <div class="box">
+    <a href="../stt/index.html" style="color:#b0561f; text-decoration:none; font-weight:600; display:block; text-align:left;">&larr; Zpět</a>
+    <h2>Geometrie břitu (Ortogonální řezání)</h2>
+    <svg width="400" height="300" viewBox="0 0 400 300">
+      <!-- Obrobek -->
+      <path d="M 50,150 L 200,150 L 200,200 L 50,200 Z" fill="#b0c4de" />
+      <path d="M 200,150 L 200,140 L 350,140 L 350,200 L 200,200 Z" fill="#87cefa" />
+      
+      <!-- Nástroj (rotates based on alpha and gamma) -->
+      <g id="tool" transform="translate(200, 150)">
+        <!-- The tool polygon, starting from tip at 0,0 -->
+        <polygon points="0,0 80,-80 120,0" fill="#ff8c00" stroke="#cd853f" stroke-width="2" id="tool-poly"/>
+      </g>
+      
+      <!-- Roviny -->
+      <line x1="200" y1="50" x2="200" y2="250" stroke="#000" stroke-dasharray="5,5" /> <!-- Základní rovina (svislá k řezné) -->
+      <line x1="50" y1="150" x2="350" y2="150" stroke="#000" stroke-dasharray="5,5" /> <!-- Řezná rovina (vodorovná) -->
+    </svg>
+
+    <div class="slider-row">
+      <div class="label">Úhel hřbetu (α):</div>
+      <input type="range" id="alpha" min="2" max="15" value="8" oninput="updateGeom()">
+      <div class="val" id="val_alpha">8°</div>
+    </div>
+    <div class="slider-row">
+      <div class="label">Úhel břitu (β):</div>
+      <input type="range" id="beta" min="40" max="85" value="70" oninput="updateGeom()">
+      <div class="val" id="val_beta">70°</div>
+    </div>
+    <div class="slider-row">
+      <div class="label">Úhel čela (γ):</div>
+      <div class="val" id="val_gamma" style="width:100px; text-align:center; font-weight:bold; color:#b0561f">12°</div>
+    </div>
+    <p style="font-size:14px; color:#5c5346;">Součet úhlů α + β + γ = 90° (pro nástroje s kladným úhlem čela)</p>
+  </div>
+<script>
+  function updateGeom() {
+    const alpha = parseInt(document.getElementById('alpha').value);
+    let beta = parseInt(document.getElementById('beta').value);
+    
+    if (alpha + beta > 110) { // allow some negative gamma, max total 110 for visualization limits
+        beta = 110 - alpha;
+        document.getElementById('beta').value = beta;
+    }
+    
+    const gamma = 90 - (alpha + beta);
+    
+    document.getElementById('val_alpha').innerText = alpha + '°';
+    document.getElementById('val_beta').innerText = beta + '°';
+    document.getElementById('val_gamma').innerText = gamma + '°';
+    
+    const tool = document.getElementById('tool-poly');
+    
+    // Convert angles to radians for visualization coordinates
+    const aRad = alpha * Math.PI / 180;
+    const bRad = beta * Math.PI / 180;
+    
+    // Front face (hřbet) drops down and right by angle alpha from horizontal
+    // Top face (čelo) goes up and right by angle gamma from vertical
+    
+    // To simplify SVG drawing, we just rotate and transform a static wedge, 
+    // or draw custom points.
+    // x1,y1 is hřbet point
+    const L1 = 100;
+    const x1 = L1 * Math.cos(aRad);
+    const y1 = L1 * Math.sin(aRad); // positive Y is down in SVG
+    
+    // x2,y2 is čelo point
+    const angleCelo = (alpha + beta) * Math.PI / 180;
+    const L2 = 120;
+    const x2 = L2 * Math.cos(angleCelo);
+    const y2 = -L2 * Math.sin(angleCelo); // negative Y is up
+    
+    // Draw polygon from 0,0 -> x2,y2 -> (x2+something, y2) -> x1,y1
+    // A simple wedge is enough:
+    tool.setAttribute("points", `0,0 ${x2},${y2} ${x2+40},0 ${x1},${y1}`);
+  }
+  updateGeom();
+</script>
+</body>
+</html>

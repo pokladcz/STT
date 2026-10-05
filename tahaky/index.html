@@ -23,9 +23,15 @@
 </head>
 <body>
   <a href="../index.html" style="position:absolute; top:24px; left:24px; color: #b0561f; text-decoration: none; font-weight: 600;">&larr; Zpět na rozcestník</a>
-  <h1>Chytré Taháky - Značení Ocelí (EN)</h1>
+  <h1 id="titleText">Chytré Taháky - Značení Ocelí (EN)</h1>
   
-  <div class="scene" id="cardScene">
+  
+    <div style="margin-bottom: 24px; display:flex; gap:16px;">
+      <a href="?deck=oceli" style="text-decoration:none; padding:8px 16px; background:#fff; border:1px solid #ded3c2; border-radius:8px; color:#231d16; font-weight:bold;">Značení Ocelí</a>
+      <a href="?deck=cnc" style="text-decoration:none; padding:8px 16px; background:#fff; border:1px solid #ded3c2; border-radius:8px; color:#231d16; font-weight:bold;">CNC Kódy</a>
+    </div>
+    <div class="scene" id="cardScene">
+    
     <div class="card" id="flashcard">
       <div class="card-face front">
         <div class="term" id="term">C45E</div>
@@ -41,27 +47,44 @@
     <button class="btn-know" onclick="nextCard()">Věděl jsem</button>
   </div>
 
+
 <script>
-  const cards = [
-    { term: 'C45E', def: 'Nelegovaná ušlechtilá ocel s obsahem uhlíku 0.45%, vhodná k zušlechťování.' },
-    { term: '16MnCr5', def: 'Legovaná ocel s 0.16% C, 1.25% Mn (5/4) a chromem. Určena k cementování.' },
-    { term: 'S235JR', def: 'Nelegovaná konstrukční ocel, mez kluzu 235 MPa, vrubová houževnatost při 20°C.' },
-    { term: 'X5CrNi18-10', def: 'Vysokolegovaná korozivzdorná ocel (austenitická), 0.05% C, 18% Cr, 10% Ni.' },
-    { term: 'E335', def: 'Ocel pro strojní součásti s minimální mezí kluzu 335 MPa.' }
-  ];
+  const urlParams = new URLSearchParams(window.location.search);
+  const deck = urlParams.get('deck') || 'oceli';
+  
+  const titleEl = document.getElementById('titleText');
+  if(deck === 'cnc') titleEl.innerText = "Chytré Taháky - CNC G a M Kódy";
+  
+  let cards = [];
   let curr = 0;
   
+  fetch(`data/${deck}.json`)
+    .then(r => r.json())
+    .then(data => { 
+       cards = data; 
+       if(cards.length > 0) {
+         document.getElementById('term').innerText = cards[0].term;
+         document.getElementById('definition').innerText = cards[0].def;
+       }
+    }).catch(e => {
+       document.getElementById('term').innerText = "Chyba";
+       document.getElementById('definition').innerText = "Soubor nenalezen.";
+    });
+
   const elCard = document.getElementById('flashcard');
   elCard.addEventListener('click', () => { elCard.classList.toggle('is-flipped'); });
 
   function nextCard() {
     elCard.classList.remove('is-flipped');
     setTimeout(() => {
-      curr = (curr + 1) % cards.length;
-      document.getElementById('term').innerText = cards[curr].term;
-      document.getElementById('definition').innerText = cards[curr].def;
-    }, 200); // wait for flip back animation
+      if(cards.length > 0) {
+        curr = (curr + 1) % cards.length;
+        document.getElementById('term').innerText = cards[curr].term;
+        document.getElementById('definition').innerText = cards[curr].def;
+      }
+    }, 200);
   }
 </script>
+
 </body>
 </html>

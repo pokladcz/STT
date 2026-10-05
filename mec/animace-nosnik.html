@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<title>Ohybový moment nosníku | Výukový portál</title>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  body { background: #fbf8f3; font-family: 'IBM Plex Sans', sans-serif; text-align: center; padding: 48px; }
+  .box { background: #fff; padding: 32px; border-radius: 16px; display: inline-block; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+  h2 { font-family: 'Quicksand', sans-serif; color: #b0561f; }
+  input[type=range] { width: 100%; margin: 16px 0; }
+  .graph { width: 400px; height: 100px; background: #f9f6f0; margin: 16px auto; position: relative; border-bottom: 2px solid #5c5346; }
+  .moment-line { position: absolute; bottom: 0; left: 0; border-bottom: 2px solid #b0561f; transform-origin: left bottom; }
+</style>
+</head>
+<body>
+  <div class="box">
+    <a href="../mec/index.html" style="color:#b0561f; text-decoration:none; font-weight:600; display:block; text-align:left;">&larr; Zpět</a>
+    <h2>Průběh ohybového momentu na nosníku</h2>
+    
+    <!-- Nosník SVG -->
+    <svg width="400" height="100" viewBox="0 0 400 100" style="overflow:visible;">
+      <!-- Beam -->
+      <rect x="0" y="40" width="400" height="20" fill="#8a8072" />
+      <!-- Podpora A (pevná) -->
+      <polygon points="0,60 -10,80 10,80" fill="#5c5346" />
+      <!-- Podpora B (posuvná) -->
+      <polygon points="400,60 390,80 410,80" fill="#5c5346" />
+      <circle cx="395" cy="85" r="5" fill="#231d16"/>
+      <circle cx="405" cy="85" r="5" fill="#231d16"/>
+      
+      <!-- Force Vector -->
+      <g id="force_vector" transform="translate(200, 0)">
+        <line x1="0" y1="0" x2="0" y2="35" stroke="#900" stroke-width="4" />
+        <polygon points="0,40 -5,30 5,30" fill="#900" />
+        <text x="10" y="20" fill="#900" font-weight="bold" font-family="sans-serif">F = 10 kN</text>
+      </g>
+    </svg>
+
+    <label style="display:block; margin-top:16px;">Posuňte sílu F po nosníku:</label>
+    <input type="range" id="pos" min="0" max="400" value="200" oninput="updateBeam()">
+    
+    <div style="text-align:left; font-weight:bold; margin-top:24px;">Ohybový moment (M_o):</div>
+    <!-- Simple Canvas for Moment Graph -->
+    <canvas id="momentGraph" width="400" height="100" style="background:#fcfaf7; border-bottom:2px solid #5c5346; margin-top:8px;"></canvas>
+  </div>
+<script>
+  function updateBeam() {
+    const pos = parseInt(document.getElementById('pos').value);
+    document.getElementById('force_vector').setAttribute('transform', `translate(${pos}, 0)`);
+    
+    // Calculate moment graph
+    // Max moment occurs at the point of force. M_max = F * a * b / L
+    const L = 400;
+    const a = pos;
+    const b = L - a;
+    const M_max = (10 * a * b) / L; // simple proportional scale
+    
+    const canvas = document.getElementById('momentGraph');
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    // Draw triangle
+    ctx.beginPath();
+    ctx.moveTo(0, 100);
+    ctx.lineTo(a, 100 - (M_max * 0.8)); // scaling factor for display
+    ctx.lineTo(400, 100);
+    ctx.fillStyle = 'rgba(176, 86, 31, 0.2)';
+    ctx.fill();
+    ctx.strokeStyle = '#b0561f';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+  }
+  updateBeam();
+</script>
+</body>
+</html>
